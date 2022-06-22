@@ -1,25 +1,10 @@
-import './App.css';
-import Test from '../components/Test'
+import React from 'react'
+import { Router } from '../config'
 
 const App = () => {
   return (
-    <div className="App">
-      <Test />
-      <header className="App-header">
-        <p>
-          Hello Marcell <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router />
+  )
 }
 
-export default App;
+export default App
