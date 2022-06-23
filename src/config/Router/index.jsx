@@ -6,7 +6,7 @@ const Router = () => {
     return (
         <HashRouter>
             <Routes>
-                <Route path="/" element={<Hero />} />
+                <Route exact path="/" element={<Hero />} />
                 <Route path="/collection" element={<Collection />} />
                 <Route path="/collection-detail/:id" element={<CollectionDetail />} />
                 <Route path="/detail/:id" element={<Detail />} />

@@ -1,8 +1,9 @@
 import React from 'react'
+import { Header } from '../../components/molecules';
 
 const Detail = () => {
     return (
-        <div>Detail</div>
+        <div><Header /></div>
     )
 }
 
