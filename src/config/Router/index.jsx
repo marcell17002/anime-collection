@@ -1,17 +1,17 @@
 import React from 'react'
-import { HashRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Collection, Hero, Detail, CollectionDetail } from '../../pages'
 
 const Router = () => {
     return (
-        <HashRouter>
+        <BrowserRouter>
             <Routes>
                 <Route exact path="/" element={<Hero />} />
                 <Route path="/collection" element={<Collection />} />
                 <Route path="/collection-detail/:id" element={<CollectionDetail />} />
                 <Route path="/detail/:id" element={<Detail />} />
             </Routes>
-        </HashRouter >
+        </BrowserRouter >
     )
 }
 

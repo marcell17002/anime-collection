@@ -2,7 +2,7 @@
 import { css } from '@emotion/react'
 
 const header = css({
-    backgroundColor: '#00D450',
+    backgroundColor: '#03AC0E',
     display: 'flex',
     justifyContent: 'space-between',
     padding: '0px 20px'

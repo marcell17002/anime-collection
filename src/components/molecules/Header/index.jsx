@@ -9,6 +9,7 @@ const Header = () => {
             <div css={styles.headerRightPane}>
                 <NavLink to="/" css={styles.navLink}><h4 css={styles.headerText}>Anime</h4></NavLink>
                 <NavLink to="/collection" css={styles.navLink}><h4 css={styles.headerText}>My Collection</h4></NavLink>
+                <NavLink to="/detail/1" css={styles.navLink}><h4 css={styles.headerText}>Detail</h4></NavLink>
             </div>
         </div>
     )

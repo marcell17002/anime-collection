@@ -15,7 +15,7 @@ const card = css({
 })
 
 const cardImage = css({
-    width: 'auto',
+    width: 230,
     height: 300,
     objectFit: 'cover',
     borderRadius: '15px 15px 0px 0px',
