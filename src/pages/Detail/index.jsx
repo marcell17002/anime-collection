@@ -87,7 +87,7 @@ const Detail = () => {
                                 </div>
                             </div>
                             <p css={styles.descriptionText}>{anime.description}</p>
-                            <button css={styles.button} onClick={() => saveToCollection()}>Add My Collection</button>
+                            <button css={styles.buttonSave} onClick={() => saveToCollection()}>Add My Collection</button>
                         </div>
                     </div>
                 )}

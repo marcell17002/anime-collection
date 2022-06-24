@@ -4,42 +4,9 @@ import { useEffect, useState } from 'react'
 import { useLazyQuery, useQuery } from "@apollo/client";
 import query from '../../config/GraphQl/query';
 import { Header, Card } from '../../components/molecules';
+import { styles } from './styles';
 
 const Hero = () => {
-
-
-
-    const container = css({
-        margin: '0px 50px',
-        display: 'flex-col',
-        flex: 1,
-        justifyContent: 'center',
-        alignContent: 'center',
-    })
-
-
-    const subContainer = css({
-        display: 'flex',
-        justifyContent: 'center',
-        alignContent: 'center',
-    })
-
-
-
-    const iconCheck = css({
-        color: 'red',
-        fontSize: 20
-    })
-
-
-    const animeList = css({
-        display: 'flex',
-        flexWrap: 'wrap',
-        maxWidth: 1240,
-        justifyContent: 'space-evenly',
-    })
-
-
     const [page, setPage] = useState(2)
     const [anime, setAnime] = useState([])
 
@@ -64,20 +31,18 @@ const Hero = () => {
 
 
     return (
-        <div>
+        <div css={styles.main}>
             <Header />
-            <div css={container}>
-                <div css={subContainer}>
-                    <div css={animeList}>
-                        {anime.map((item, key) => (
-                            <Card key={key} title={item.title.english} image={item.coverImage.extraLarge} to={`/detail/${item.id}`} />
-                        ))}
-                    </div>
+            <div css={styles.container}>
+                <div css={styles.animeList}>
+                    {anime.map((item, key) => (
+                        <Card key={key} title={item.title.english} image={item.coverImage.extraLarge} to={`/detail/${item.id}`} />
+                    ))}
                 </div>
-                <button onClick={async () => {
+                <button css={styles.buttonLoadMore} onClick={async () => {
                     setPage(page + 1)
                     renderAnime({ variables: { page: page, perPage: 10 } })
-                }}>test</button>
+                }}>Load More</button>
             </div>
 
         </div>
