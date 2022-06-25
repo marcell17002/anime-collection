@@ -6,12 +6,15 @@ const mq = breakpoints.map(
     bp => `@media (min-width: ${bp}px)`
 )
 
+const navlink = css({
+    textDecoration: 'none',
+})
 const card = css({
+    display: 'flex',
     margin: 10,
     position: 'relative',
     width: '100%',
     borderRadius: 15,
-    textDecoration: 'none',
     display: 'flex-col',
     marginBottom: 30,
     boxShadow: '0px 2px 8px 0px rgba(99, 99, 99, 0.2) ',
@@ -57,4 +60,11 @@ const cardTextHeader = css({
 })
 
 
-export const styles = { card, cardImage, cardInfo, cardTag, cardTextHeader }
+export const styles = {
+    navlink,
+    card,
+    cardImage,
+    cardInfo,
+    cardTag,
+    cardTextHeader
+}
