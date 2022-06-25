@@ -2,15 +2,29 @@
 import { css } from '@emotion/react'
 
 const header = css({
-    backgroundColor: '#03AC0E',
     display: 'flex',
     justifyContent: 'space-between',
-    padding: '0px 20px'
+    alignItems: 'center',
+    padding: '0px 20px',
+    boxShadow: '0px 2px 8px 0px rgba(99, 99, 99, 0.2) ',
+
+})
+
+const headerLogo = css({
+    color: '#3B82F6',
+    margin: 0,
+    padding: '20px 5px'
 })
 
 const headerText = css({
-    color: 'white',
-    padding: '0px 5px'
+    color: '#3B82F6',
+    margin: 0,
+    fontWeight: 'bold',
+    padding: '0px 10px',
+    ':hover': {
+        color: '#93C5FD',
+
+    }
 })
 
 const headerRightPane = css({
@@ -19,7 +33,8 @@ const headerRightPane = css({
 })
 
 const navLink = css({
-    textDecoration: 'none'
+    textDecoration: 'none',
+
 })
 
-export const styles = { header, headerText, headerRightPane, navLink }
+export const styles = { header, headerLogo, headerText, headerRightPane, navLink }

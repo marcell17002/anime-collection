@@ -26,6 +26,9 @@ const buttonExplore = css({
     display: 'none',
     [mq[0]]: {
         display: 'block'
+    },
+    ':hover': {
+        color: '#93C5FD'
     }
 })
 
@@ -52,12 +55,12 @@ const mainAction = css({
 
 const iconPen = css({
     fontSize: 12,
-    backgroundColor: '#9CA3AF',
+    backgroundColor: '#FACC15',
     color: 'white',
-    padding: 6,
+    padding: 7,
     borderRadius: 20,
     ':hover': {
-        backgroundColor: '#FACC15',
+        backgroundColor: '#FEF08A',
     },
     [mq[0]]: {
         padding: 8,
@@ -67,12 +70,12 @@ const iconPen = css({
 
 const iconTrash = css({
     fontSize: 12,
-    backgroundColor: '#9CA3AF',
+    backgroundColor: '#F87181',
     color: 'white',
-    padding: 6,
+    padding: 7,
     borderRadius: 20,
     ':hover': {
-        backgroundColor: '#F87181',
+        backgroundColor: '#FECACA',
     },
     [mq[0]]: {
         padding: 8,

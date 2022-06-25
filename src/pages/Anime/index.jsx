@@ -6,7 +6,7 @@ import query from '../../config/GraphQl/query';
 import { Header, Card } from '../../components/molecules';
 import { styles } from './styles';
 
-const Hero = () => {
+const Anime = () => {
     const [page, setPage] = useState(2)
     const [anime, setAnime] = useState([])
 
@@ -34,12 +34,18 @@ const Hero = () => {
         <div css={styles.main}>
             <Header />
             <div css={styles.container}>
-                <div>
-                    <h2>asdfads</h2>
+                <div css={styles.animeList}>
+                    {anime.map((item, key) => (
+                        <Card key={key} title={item.title.english} image={item.coverImage.extraLarge} to={`/detail/${item.id}`} />
+                    ))}
                 </div>
+                <button css={styles.buttonLoadMore} onClick={async () => {
+                    setPage(page + 1)
+                    renderAnime({ variables: { page: page, perPage: 10 } })
+                }}>Load More</button>
             </div>
 
         </div>
     )
 }
-export default Hero
+export default Anime

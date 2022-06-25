@@ -92,6 +92,14 @@ const infoTitleText = css({
     }
 })
 
+const textGenre = css({
+    color: '#A8A29E'
+})
+
+const detailTextGenre = css({
+    fontWeight: 'normal'
+})
+
 const additionalInfo = css({
     display: 'flex',
     marginTop: 10,
@@ -108,7 +116,7 @@ const additionalInfo = css({
 
 const iconHeartInActive = css({
     fontSize: 25,
-    color: '#FFB6B3',
+    color: 'red',
     [mq[0]]: {
         fontSize: 30,
     }
@@ -137,9 +145,35 @@ const detailCategoryText = css({
 
 const icon = css({
     fontSize: 20,
-    color: '#03AC0E',
+    color: '#3B82F6',
     margin: 0
 })
+
+const iconBoard = css({
+    fontSize: 20,
+    color: '#3B82F6',
+    margin: 0
+})
+
+const iconCLock = css({
+    fontSize: 20,
+    color: '#FB7185',
+    margin: 0
+})
+
+const iconCalendar = css({
+    fontSize: 20,
+    color: '#FBBF24',
+    margin: 0
+})
+
+const iconFlag = css({
+    fontSize: 20,
+    color: '#4ADE80',
+    margin: 0
+})
+
+
 
 const descriptionText = css({
     paddingTop: 10,
@@ -148,7 +182,7 @@ const descriptionText = css({
 })
 
 const buttonSave = css({
-    backgroundColor: '#4FD15A',
+    backgroundColor: '#3B82F6',
     padding: '15px 25px',
     width: '100%',
     border: 0,
@@ -160,6 +194,10 @@ const buttonSave = css({
     [mq[0]]: {
         marginTop: 20,
         width: 'auto'
+    },
+    ':hover': {
+        backgroundColor: '#93C5FD',
+
     }
 })
 
@@ -175,12 +213,17 @@ export const styles = {
     infoHeader,
     infoHeaderChild,
     infoTitleText,
+    textGenre,
+    detailTextGenre,
     additionalInfo,
     iconHeartInActive,
     category,
     detailCategory,
     detailCategoryText,
-    icon,
+    iconBoard,
+    iconCLock,
+    iconCalendar,
+    iconFlag,
     descriptionText,
     buttonSave
 }

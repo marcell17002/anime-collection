@@ -61,9 +61,10 @@ const ANIME_DETAILS = gql`
     }
 `
 
+
 export const query = {
     ANIME_LIST,
-    ANIME_DETAILS
+    ANIME_DETAILS,
 }
 
 export default query

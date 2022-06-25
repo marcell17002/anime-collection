@@ -9,55 +9,23 @@ const mq = breakpoints.map(
 const main = css({
     display: 'flex',
     flexDirection: 'column',
+    'h1,h3,p': {
+        margin: 0
+    }
 })
 
 const container = css({
     display: 'flex',
     flexDirection: 'column',
     alignSelf: 'center',
-    maxWidth: 1248,
-    margin: '0px 20px',
-    'h1': {
-        margin: 0,
-        color: '#333333'
-    },
-})
-
-const iconCheck = css({
-    color: 'red',
-    fontSize: 20
-})
-
-
-const animeList = css({
-    display: 'flex',
-    flexWrap: 'wrap',
-    maxWidth: 1240,
-    justifyContent: 'space-evenly',
-})
-
-const buttonLoadMore = css({
-    backgroundColor: '#4FD15A',
-    padding: '15px 25px',
     width: '100%',
-    border: 0,
-    borderRadius: 20,
-    fontSize: 20,
-    color: 'white',
-    fontWeight: 'bold',
-    alignSelf: 'center',
-    marginTop: 20,
+    maxWidth: 1248,
     [mq[0]]: {
-        margin: '50px 0px',
-        width: 400
-
+        margin: '0px 20px',
     }
 })
-
 export const styles = {
     main,
     container,
-    iconCheck,
-    animeList,
-    buttonLoadMore
+
 }

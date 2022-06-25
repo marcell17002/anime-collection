@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { Gap } from '../../components/atoms'
-import { Carousel, Header } from '../../components/molecules'
+import { CarouselCollectionPage, Header } from '../../components/molecules'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { styles } from './styles';
 const Collection = () => {
@@ -37,9 +37,9 @@ const Collection = () => {
                     </div>
                 </div>
                 <Gap height={50}></Gap>
-                <Carousel label="My Popular Collections" to="/collection-detail/1" />
+                <CarouselCollectionPage label="My Popular Collections" to="/collection-detail/1" />
                 <Gap height={50}></Gap>
-                <Carousel label="My Popular Collections" to="/collection-detail/1" />
+                <CarouselCollectionPage label="My Popular Collections" to="/collection-detail/1" />
             </div>
         </div>
     )

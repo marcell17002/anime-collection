@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { Gap, Separator } from '../../components/atoms';
-import { Header } from '../../components/molecules';
+import { CarouselCollectionPage, CarouselDetailPage, Header } from '../../components/molecules';
 import { styles } from './styles';
 import { query } from '../../config/GraphQl/query'
 
@@ -49,7 +49,6 @@ const Detail = () => {
                             {anime.isAdult ? (<div css={styles.bundleIconEightTeen}>
                                 <h4 css={styles.iconEightTeen}>18+</h4>
                             </div>) : ''}
-
                         </div>
                         <div css={styles.informationDetail}>
                             <div css={styles.infoHeader}>
@@ -57,7 +56,7 @@ const Detail = () => {
                                     <div>
                                         <p css={styles.infoTitleText}>{anime.title.english} </p>
                                         <Separator width={100} />
-                                        <h3>Genre : {renderGenres(anime.genres)}</h3>
+                                        <h3 css={styles.textGenre}>Genres : <span css={styles.detailTextGenre}>{renderGenres(anime.genres)}</span></h3>
                                     </div>
                                 </div>
                                 <div css={styles.additionalInfo}>
@@ -67,30 +66,32 @@ const Detail = () => {
                             </div>
                             <div css={styles.category}>
                                 <div css={styles.detailCategory}>
-                                    <FontAwesomeIcon icon="clapperboard" css={styles.icon} />
+                                    <FontAwesomeIcon icon="clapperboard" css={styles.iconBoard} />
                                     <p css={styles.detailCategoryText}>{anime.episodes} episodes </p>
                                 </div>
                                 <Gap width={20} />
                                 <div css={styles.detailCategory}>
-                                    <FontAwesomeIcon icon="clock" css={styles.icon} />
+                                    <FontAwesomeIcon icon="clock" css={styles.iconCLock} />
                                     <p css={styles.detailCategoryText}>{anime.duration} minutes </p>
                                 </div>
                                 <Gap width={20} />
                                 <div css={styles.detailCategory}>
-                                    <FontAwesomeIcon icon="calendar" css={styles.icon} />
+                                    <FontAwesomeIcon icon="calendar" css={styles.iconCalendar} />
                                     <p css={styles.detailCategoryText}>{anime.seasonYear}</p>
                                 </div>
                                 <Gap width={20} />
                                 <div css={styles.detailCategory}>
-                                    <FontAwesomeIcon icon="flag" css={styles.icon} />
+                                    <FontAwesomeIcon icon="flag" css={styles.iconFlag} />
                                     <p css={styles.detailCategoryText}>{anime.countryOfOrigin} </p>
                                 </div>
                             </div>
                             <p css={styles.descriptionText}>{anime.description}</p>
-                            <button css={styles.buttonSave} onClick={() => saveToCollection()}>Add My Collection</button>
+                            <button css={styles.buttonSave} onClick={() => saveToCollection()}>Add to My Collection</button>
                         </div>
                     </div>
                 )}
+                <Gap height={50}></Gap>
+                <CarouselDetailPage label="My Popuslar Collections" to="/collection-detail/1" />
             </div>
         </div>
     )
