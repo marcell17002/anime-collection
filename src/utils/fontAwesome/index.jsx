@@ -1,6 +1,7 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
     faCheckSquare,
+    faCheck,
     faCoffee,
     faFilm,
     faClapperboard,
@@ -14,6 +15,7 @@ import {
 
 library.add(
     faCheckSquare,
+    faCheck,
     faCoffee,
     faFilm,
     faClapperboard,

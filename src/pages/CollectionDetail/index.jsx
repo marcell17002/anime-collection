@@ -118,7 +118,7 @@ const CollectionDetail = () => {
                 <Gap height={20}></Gap>
                 <div css={animeList}>
                     {anime.map((item, key) => (
-                        <Card key={key} title={item.title.english} image={item.coverImage.extraLarge} to={`/detail/${item.id}`} />
+                        <Card key={key} title={item.title.userPreferred} image={item.coverImage.extraLarge} to={`/detail/${item.id}`} />
                     ))}
                 </div>
             </div>

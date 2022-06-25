@@ -28,7 +28,7 @@ const ANIME_LIST = gql`
                 genres
                 seasonYear
                 title {
-                  english
+                  userPreferred
                 }
             }
         }
@@ -55,7 +55,7 @@ const ANIME_DETAILS = gql`
             genres
             seasonYear
             title {
-              english
+              userPreferred
             }
         }
     }

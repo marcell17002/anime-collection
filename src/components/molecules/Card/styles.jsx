@@ -8,10 +8,14 @@ const mq = breakpoints.map(
 
 const navlink = css({
     textDecoration: 'none',
+    width: '100%',
+    [mq[0]]: {
+        width: 'auto'
+    }
 })
+
 const card = css({
     display: 'flex',
-    margin: 10,
     position: 'relative',
     width: '100%',
     borderRadius: 15,
@@ -29,7 +33,7 @@ const card = css({
 
 const cardImage = css({
     width: '100%',
-    height: 300,
+    height: 280,
     objectFit: 'cover',
     borderRadius: '15px 15px 0px 0px',
     [mq[0]]: {
@@ -43,8 +47,38 @@ const cardInfo = css({
     display: 'flex-col',
 })
 
+const detail = css({
+    display: 'flex',
+    alignItems: 'center',
+    marginTop: 5
+})
+
+const iconFilm = css({
+    color: '#3B82F6',
+    fontSize: 16
+})
+
+const iconClock = css({
+    color: '#FBBF24',
+    fontSize: 16
+})
+
+const iconCheck = css({
+    color: 'white',
+    padding: 6,
+    borderRadius: 12,
+    backgroundColor: '#16A34A',
+    fontSize: 14
+})
+
+const textDetail = css({
+    margin: 0,
+    paddingLeft: 10,
+    color: '#3333',
+    fontSize: 14
+})
+
 const cardTag = css({
-    backgroundColor: 'red',
     position: 'absolute',
     zIndex: 2,
     top: 0,
@@ -65,6 +99,11 @@ export const styles = {
     card,
     cardImage,
     cardInfo,
+    detail,
+    iconFilm,
+    iconClock,
+    iconCheck,
+    textDetail,
     cardTag,
     cardTextHeader
 }

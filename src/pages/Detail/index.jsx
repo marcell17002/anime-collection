@@ -54,7 +54,7 @@ const Detail = () => {
                             <div css={styles.infoHeader}>
                                 <div css={styles.infoHeaderChild}>
                                     <div>
-                                        <p css={styles.infoTitleText}>{anime.title.english} </p>
+                                        <p css={styles.infoTitleText}>{anime.title.userPreferred} </p>
                                         <Separator width={100} />
                                         <h3 css={styles.textGenre}>Genres : <span css={styles.detailTextGenre}>{renderGenres(anime.genres)}</span></h3>
                                     </div>

@@ -16,11 +16,7 @@ const container = css({
     flexDirection: 'column',
     alignSelf: 'center',
     maxWidth: 1248,
-    margin: '0px 20px',
-    'h1': {
-        margin: 0,
-        color: '#333333'
-    },
+    padding: '0px 20px',
 })
 
 const iconCheck = css({
@@ -32,8 +28,8 @@ const iconCheck = css({
 const animeList = css({
     display: 'flex',
     flexWrap: 'wrap',
-    maxWidth: 1240,
     justifyContent: 'space-evenly',
+
 })
 
 const buttonLoadMore = css({
@@ -48,7 +44,7 @@ const buttonLoadMore = css({
     alignSelf: 'center',
     marginTop: 20,
     [mq[0]]: {
-        margin: '50px 0px',
+        marginTop: 50,
         width: 400
     },
     ':hover': {

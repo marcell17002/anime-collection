@@ -6,8 +6,7 @@ const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route exact path="/" element={<Hero />} />
-                <Route exact path="/anime" element={<Anime />} />
+                <Route exact path="/" element={<Anime />} />
                 <Route path="/collection" element={<Collection />} />
                 <Route path="/collection-detail/:id" element={<CollectionDetail />} />
                 <Route path="/detail/:id" element={<Detail />} />
