@@ -9,7 +9,8 @@ const mq = breakpoints.map(
 const bundleCollection = css({
     margin: '0px 16px',
     [mq[0]]: {
-        margin: 0
+        margin: '0px 20px',
+
     }
 })
 
@@ -36,6 +37,7 @@ const buttonAction = css({
     border: 0,
     backgroundColor: 'transparent'
 })
+
 const mainTitle = css({
     display: 'flex',
     alignItems: 'center'

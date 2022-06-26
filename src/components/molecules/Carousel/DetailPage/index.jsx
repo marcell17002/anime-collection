@@ -28,7 +28,7 @@ const breakpointCarousel = {
 }
 const CarouselDetailPage = ({ label, to }) => {
     return (
-        <div css={styles.bundleCollection}>
+        <div>
             <div css={styles.mainTitle}>
                 <h1 css={styles.textTitle}>Recommendation For You</h1>
             </div>

@@ -6,13 +6,6 @@ const mq = breakpoints.map(
     bp => `@media (min-width: ${bp}px)`
 )
 
-const bundleCollection = css({
-    margin: '0px 16px',
-    [mq[0]]: {
-        margin: 0
-    }
-})
-
 const headerList = css({
     display: 'flex',
     alignItems: 'center',
@@ -84,7 +77,6 @@ const iconTrash = css({
 })
 
 export const styles = {
-    bundleCollection,
     headerList,
     buttonExplore,
     buttonAction,

@@ -1,11 +1,19 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 
+const main = css({
+    width: '100%',
+    zIndex: 3,
+    position: 'fixed',
+    backgroundColor: 'white',
+
+})
+
 const header = css({
     display: 'flex',
+    padding: '0px 20px',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '0px 20px',
     boxShadow: '0px 2px 8px 0px rgba(99, 99, 99, 0.2) ',
 
 })
@@ -37,4 +45,4 @@ const navLink = css({
 
 })
 
-export const styles = { header, headerLogo, headerText, headerRightPane, navLink }
+export const styles = { main, header, headerLogo, headerText, headerRightPane, navLink }

@@ -22,15 +22,18 @@ const container = css({
     width: '100%',
     maxWidth: 1248,
     [mq[0]]: {
-        margin: '0px 20px',
-    }
+        paddingTop: 100,
+    },
 })
 
 const banner = css({
-    marginTop: 20,
     display: 'flex',
     flexDirection: 'column',
     position: 'relative',
+    marginTop: 20,
+    [mq[0]]: {
+        margin: '10px 16px 0px',
+    }
 })
 
 const imageBanner = css({
@@ -82,10 +85,10 @@ const infoBanner = css({
     flexDirection: 'column',
     width: '90%',
     zIndex: 3,
-    margin: '0px 10px 10px 10px',
+    margin: '50px 10px 10px 10px',
     [mq[0]]: {
         width: '70%',
-        paddingLeft: 20
+        margin: '0px 0px 0px 20px'
 
     }
 })
