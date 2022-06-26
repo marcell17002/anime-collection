@@ -10,7 +10,8 @@ import {
     faFlag,
     faHeart,
     faTrash,
-    faPen
+    faPen,
+    faArrowRight,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -24,5 +25,6 @@ library.add(
     faFlag,
     faHeart,
     faTrash,
-    faPen
+    faPen,
+    faArrowRight
 )

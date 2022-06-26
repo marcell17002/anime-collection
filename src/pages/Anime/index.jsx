@@ -6,6 +6,7 @@ import query from '../../config/GraphQl/query';
 import { Header, Card } from '../../components/molecules';
 import { styles } from './styles';
 import { Gap } from '../../components/atoms';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Anime = () => {
     const [page, setPage] = useState(2)
@@ -114,7 +115,7 @@ const Anime = () => {
         border: 0,
         borderRadius: 30,
         padding: '20px 40px',
-        fontSize: 16,
+        fontSize: 18,
         width: '100%',
         color: 'white',
         ':hover': {
@@ -153,6 +154,72 @@ const Anime = () => {
         }
     })
 
+    const bannerCollections = css({
+        backgroundColor: '#E4E4E7',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '30px 40px',
+        borderRadius: 30,
+        flexDirection: 'column',
+        [mq[0]]: {
+            flexDirection: 'row',
+            padding: '50px 60px',
+        }
+    })
+
+    const bundleInfoCollections = css({
+        [mq[0]]: {
+            width: '60%'
+        }
+    })
+
+    const textHeaderCollections = css({
+        margin: 0
+    })
+
+    const textDescCollections = css({
+        margin: 0,
+        fontSize: 18,
+        paddingTop: 15
+    })
+
+    const buttonCollections = css({
+        backgroundColor: '#3B82F6',
+        border: 0,
+        padding: '20px 30px',
+        borderRadius: 20,
+        width: '100%',
+        marginTop: 50,
+        ':hover': {
+            backgroundColor: '#93C5FD',
+        },
+        [mq[0]]: {
+            width: 'auto',
+            marginTop: 0,
+        }
+    })
+
+    const iconChevronRight = css({
+        fontSize: 18,
+        color: 'white ',
+        paddingLeft: 20
+    })
+
+    const bundleButton = css({
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        [mq[0]]: {
+            justifyContent: 'start'
+        }
+    })
+
+    const textButton = css({
+        fontSize: 20,
+        color: 'white',
+        margin: 0
+    })
     return (
         <div css={styles.main}>
             <Header />
@@ -189,6 +256,21 @@ const Anime = () => {
                         renderAnime({ variables: { page: page, perPage: 10 } })
                     }}>Load More</button>
                 </div>
+                <Gap height={50}></Gap>
+                <div css={bannerCollections}>
+                    <div css={bundleInfoCollections}>
+                        <h1 css={textHeaderCollections}>Anime Collections</h1>
+                        <p css={textDescCollections}>Find the mots outstanding anime that we recommend and save it in your collections Find the mots outstanding anime that we </p>
+                    </div>
+                    <button css={buttonCollections}>
+                        <div css={bundleButton}>
+                            <p css={textButton}>Discover More</p>
+                            <FontAwesomeIcon icon="arrow-right" css={iconChevronRight}></FontAwesomeIcon>
+                        </div>
+                    </button>
+                </div>
+                <Gap height={50}></Gap>
+
             </div>
 
         </div>
