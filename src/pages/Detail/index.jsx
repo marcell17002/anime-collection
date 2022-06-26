@@ -12,6 +12,8 @@ import { query } from '../../config/GraphQl/query'
 const Detail = () => {
     const params = useParams()
     const [anime, setAnime] = useState([])
+    const [randomPage, setRandomPage] = useState(() => Math.floor(Math.random() * 100))
+    const [recommendationAnime, setRecommendationAnime] = useState([])
     const [loading, setLoading] = useState(true)
 
 
@@ -20,6 +22,15 @@ const Detail = () => {
         onCompleted: (data) => {
             const result = data.Media
             setAnime(result)
+            setLoading(false)
+        }
+    })
+
+    useQuery(query.ANIME_LIST, {
+        variables: { page: randomPage, perPage: 10 },
+        onCompleted: (data) => {
+            const result = data.Page.media
+            setRecommendationAnime(result)
             setLoading(false)
         }
     })
@@ -45,22 +56,25 @@ const Detail = () => {
             <div css={styles.container}>
                 <div css={styles.bundle}>
                     <Gap height={50} />
-                    {!loading &&
-                        <AnimeDetail title={anime.title.userPreferred}
-                            isAdult={anime.isAdult}
-                            coverImage={anime.coverImage.extraLarge}
-                            favourites={anime.favourites}
-                            genres={renderGenres(anime.genres)}
-                            episodes={anime.episodes}
-                            duration={anime.duration}
-                            seasonYear={anime.seasonYear}
-                            countryOfOrigin={anime.countryOfOrigin}
-                            description={anime.description}
-                            onClick={() => saveToCollection()} />
+                    {!loading ? (
+                        <>
+                            <AnimeDetail title={anime.title.userPreferred}
+                                isAdult={anime.isAdult}
+                                coverImage={anime.coverImage.extraLarge}
+                                favourites={anime.favourites}
+                                genres={renderGenres(anime.genres)}
+                                episodes={anime.episodes}
+                                duration={anime.duration}
+                                seasonYear={anime.seasonYear}
+                                countryOfOrigin={anime.countryOfOrigin}
+                                description={anime.description}
+                                onClick={() => saveToCollection()} />
+                            <Gap height={50}></Gap>
+                            <CarouselDetailPage items={recommendationAnime} />
+                        </>
+                    ) : <div />
                     }
-                    <Gap height={50}></Gap>
 
-                    <CarouselDetailPage label="My Popuslar Collections" to="/collection-detail/1" />
                 </div>
             </div>
         </div >

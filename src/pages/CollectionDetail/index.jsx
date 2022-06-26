@@ -35,6 +35,7 @@ const CollectionDetail = () => {
     const headerList = css({
         display: 'flex',
         alignItems: 'start',
+        marginTop: 100
     })
 
     const buttonAction = css({

@@ -19,6 +19,8 @@ const AnimeDetail = ({ title, isAdult, coverImage, favourites, genres, episodes,
                         <div>
                             <p css={styles.infoTitleText}>{title} </p>
                             <Separator width={100} />
+                            <Gap height={10}></Gap>
+
                             <h3 css={styles.textGenre}>Genres : <span css={styles.detailTextGenre}>{genres}</span></h3>
                         </div>
                     </div>
@@ -27,6 +29,7 @@ const AnimeDetail = ({ title, isAdult, coverImage, favourites, genres, episodes,
                         <p>{favourites}</p>
                     </div>
                 </div>
+                <Gap height={20}></Gap>
                 <div css={styles.category}>
                     <div css={styles.detailCategory}>
                         <FontAwesomeIcon icon="clapperboard" css={styles.iconBoard} />

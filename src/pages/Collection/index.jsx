@@ -1,41 +1,47 @@
 /** @jsxImportSource @emotion/react */
 import { Gap } from '../../components/atoms'
-import { CarouselCollectionPage, Header } from '../../components/molecules'
+import { Banner, CarouselCollectionPage, Header } from '../../components/molecules'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { styles } from './styles';
+import { useState } from 'react';
+import { useQuery } from '@apollo/client';
+import query from '../../config/GraphQl/query';
 const Collection = () => {
+    const [randomId, setRandomId] = useState(() =>
+        Math.floor(Math.random() * 10000)
+    )
+    const [recommendationAnime, setRecommendationAnime] = useState([])
+    const [loading, setLoading] = useState(true)
 
+
+    useQuery(query.ANIME_DETAILS, {
+        variables: { id: randomId },
+        onCompleted: (data) => {
+            const result = data.Media
+            setRecommendationAnime(result)
+            setLoading(false)
+        },
+        onError: () => {
+            const localData = JSON.parse(localStorage.getItem('anime'))
+            setRecommendationAnime(localData[8])
+            setLoading(false)
+        }
+    })
     return (
         <div css={styles.main}>
             <Header />
             <div css={styles.container}>
-                <div css={styles.banner}>
-                    <div css={styles.bundleImage}>
-                        <div css={styles.baseLayerImage}></div>
-                        <img css={styles.imageBanner} src={'https://s4.anilist.co/file/anilistcdn/media/anime/banner/1-T3PJUjFJyRwg.jpg'} alt="banner-image-anime" />
-                    </div>
-                    <div css={styles.infoBanner}>
-                        <h4 css={styles.titleText}>#13 Trending</h4>
-                        <h2 css={styles.titleText}>The Dawn of The Twitch</h2>
-                        <div css={styles.category}>
-                            <div css={styles.detailCategory}>
-                                <FontAwesomeIcon icon="clapperboard" css={styles.icon} />
-                                <p css={styles.detailCategoryText}> episodes </p>
-                            </div>
-                            <Gap width={20} />
-                            <div css={styles.detailCategory}>
-                                <FontAwesomeIcon icon="clock" css={styles.icon} />
-                                <p css={styles.detailCategoryText}> minutes </p>
-                            </div>
-                            <Gap width={20} />
-                            <div css={styles.detailCategory}>
-                                <FontAwesomeIcon icon="calendar" css={styles.icon} />
-                                <p css={styles.detailCategoryText}>asddsa</p>
-                            </div>
-                        </div>
-                        <p css={styles.descriptionText}>Enter a world in the distant future, where Bounty Hunters roam the solar system. Spike and Jet, bounty hunting partners, set out on journeys in an ever struggling effort to win bounty rewards to survive.While traveling, they meet up with other very interesting people. Could Faye, the beautiful and ridiculously poor gambler, Edward, the computer genius, and Ein, the engineered dog be a good addition to the group?</p>
-                    </div>
-                </div>
+                {!loading && <Banner
+                    title={recommendationAnime.title.userPreferred}
+                    desc={recommendationAnime.description}
+                    image={recommendationAnime.bannerImage === null ? recommendationAnime.coverImage.extraLarge : recommendationAnime.bannerImage}
+                    episodes={recommendationAnime.episodes}
+                    duration={recommendationAnime.duration}
+                    year={recommendationAnime.seasonYear}
+                    trending={recommendationAnime.trending}
+
+                />}
+
                 <Gap height={50}></Gap>
                 <CarouselCollectionPage label="My Popular Collections" to="/collection-detail/1" />
                 <Gap height={50}></Gap>

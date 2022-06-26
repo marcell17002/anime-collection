@@ -26,7 +26,7 @@ const breakpointCarousel = {
     },
 
 }
-const CarouselDetailPage = ({ label, to }) => {
+const CarouselDetailPage = ({ items }) => {
     return (
         <div>
             <div css={styles.mainTitle}>
@@ -34,20 +34,24 @@ const CarouselDetailPage = ({ label, to }) => {
             </div>
             <Gap height={20}></Gap>
             <Swiper breakpoints={breakpointCarousel}
-                speed={3000}
+                speed={6000}
                 autoplay={{
-                    delay: 1000,
+                    delay: 2000,
                     disableOnInteraction: true,
                 }}
                 modules={[Autoplay, Pagination, Navigation]}
             >
-                <SwiperSlide><Card title="asdasd" to="/" image="https://s4.anilist.co/file/anilistcdn/media/anime/banner/1-T3PJUjFJyRwg.jpg"></Card></SwiperSlide>
-                <SwiperSlide><Card title="asdasd" to="/" image="https://s4.anilist.co/file/anilistcdn/media/anime/banner/1-T3PJUjFJyRwg.jpg"></Card></SwiperSlide>
-                <SwiperSlide><Card title="asdasd" to="/" image="https://s4.anilist.co/file/anilistcdn/media/anime/banner/1-T3PJUjFJyRwg.jpg"></Card></SwiperSlide>
-                <SwiperSlide><Card title="asdasd" to="/" image="https://s4.anilist.co/file/anilistcdn/media/anime/banner/1-T3PJUjFJyRwg.jpg"></Card></SwiperSlide>
-                <SwiperSlide><Card title="asdasd" to="/" image="https://s4.anilist.co/file/anilistcdn/media/anime/banner/1-T3PJUjFJyRwg.jpg"></Card></SwiperSlide>
-                <SwiperSlide><Card title="asdasd" to="/" image="https://s4.anilist.co/file/anilistcdn/media/anime/banner/1-T3PJUjFJyRwg.jpg"></Card></SwiperSlide>
-                <SwiperSlide><Card title="asdasd" to="/" image="https://s4.anilist.co/file/anilistcdn/media/anime/banner/1-T3PJUjFJyRwg.jpg"></Card></SwiperSlide>
+                {items.map((item, key) => (
+                    <SwiperSlide key={key}>
+                        <Card
+                            title={item.title.userPreferred}
+                            episodes={item.episodes}
+                            duration={item.duration}
+                            image={item.coverImage.extraLarge}
+                            to={`/detail/${item.id}`}
+                        ></Card>
+                    </SwiperSlide>
+                ))}
             </Swiper>
         </div>
 
