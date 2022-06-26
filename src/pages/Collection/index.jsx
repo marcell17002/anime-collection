@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { Gap } from '../../components/atoms'
-import { Banner, CarouselCollectionPage, Header } from '../../components/molecules'
+import { TopTrending, CarouselCollectionPage, Header } from '../../components/molecules'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { styles } from './styles';
 import { useState } from 'react';
@@ -31,9 +31,8 @@ const Collection = () => {
         <div css={styles.main}>
             <Header />
             <div css={styles.container}>
-                {!loading && <Banner
+                {!loading && <TopTrending
                     title={recommendationAnime.title.userPreferred}
-                    desc={recommendationAnime.description}
                     image={recommendationAnime.bannerImage === null ? recommendationAnime.coverImage.extraLarge : recommendationAnime.bannerImage}
                     episodes={recommendationAnime.episodes}
                     duration={recommendationAnime.duration}

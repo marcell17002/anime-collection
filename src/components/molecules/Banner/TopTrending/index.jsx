@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Gap } from '../../atoms'
+import { Gap } from '../../../atoms'
 import { styles } from './styles'
 
-const Banner = ({ image, title, desc, trending, episodes, duration, year }) => {
+const TopTrending = ({ image, title, trending, episodes, duration, year }) => {
     return (
         <div css={styles.banner}>
             <div css={styles.bundleImage}>
@@ -29,10 +29,9 @@ const Banner = ({ image, title, desc, trending, episodes, duration, year }) => {
                         <p css={styles.detailCategoryText}>{year}</p>
                     </div>
                 </div>
-                <p css={styles.descriptionText}>{desc}</p>
             </div>
         </div>
     )
 }
 
-export default Banner
+export default TopTrending

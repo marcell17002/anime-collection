@@ -18,10 +18,9 @@ const banner = css({
 
 const imageBanner = css({
     width: '100%',
-    height: 530,
+    height: 400,
     objectFit: 'cover',
     [mq[0]]: {
-        height: 400,
         borderRadius: 20,
     }
 })
@@ -65,10 +64,10 @@ const infoBanner = css({
     flexDirection: 'column',
     width: '90%',
     zIndex: 3,
-    margin: '50px 10px 10px 10px',
+    margin: '100px 10px 10px 10px',
     [mq[0]]: {
         width: '70%',
-        margin: '0px 0px 0px 20px'
+        margin: '50px 0px 0px 20px'
 
     }
 })

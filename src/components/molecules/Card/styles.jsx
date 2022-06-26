@@ -27,8 +27,8 @@ const card = css({
         margin: 0
     },
     [mq[0]]: {
-        width: 'min-content',
-    }
+        width: 220,
+    },
 })
 
 const cardImage = css({
@@ -43,7 +43,7 @@ const cardImage = css({
 })
 
 const cardInfo = css({
-    padding: '10px 20px',
+    padding: '10px 15px',
     display: 'flex-col',
 })
 
@@ -63,12 +63,29 @@ const iconClock = css({
     fontSize: 16
 })
 
-const iconCheck = css({
-    color: 'white',
-    padding: 6,
-    borderRadius: 12,
-    backgroundColor: '#16A34A',
-    fontSize: 14
+const bundleHeader = css({
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 25
+})
+
+const iconHeart = css({
+    color: 'red',
+    fontSize: 20,
+    paddingLeft: 5,
+    ':hover': {
+        fontSize: 24,
+    }
+})
+
+const iconHeartInActive = css({
+    color: '#E4E4E7',
+    fontSize: 20,
+    paddingLeft: 5,
+    ':hover': {
+        fontSize: 24,
+    },
 })
 
 const textDetail = css({
@@ -76,6 +93,15 @@ const textDetail = css({
     paddingLeft: 10,
     color: '#3333',
     fontSize: 14
+})
+
+const iconCheck = css({
+    color: 'white',
+    padding: 6,
+    borderRadius: 12,
+    backgroundColor: '#16A34A',
+    fontSize: 14,
+
 })
 
 const cardTag = css({
@@ -102,6 +128,9 @@ export const styles = {
     detail,
     iconFilm,
     iconClock,
+    bundleHeader,
+    iconHeart,
+    iconHeartInActive,
     iconCheck,
     textDetail,
     cardTag,
