@@ -8,7 +8,7 @@ const AnimeInfo = ({ title, genres, imageBanner, imageCover, onClick }) => {
                 <h1 css={styles.textTitle}>{title}</h1>
                 <h3 css={styles.textGenres}>{genres}</h3>
                 <img css={styles.imageMobile} src={imageBanner} alt="cover-image-random-anime" />
-                <Gap height={25}></Gap>
+                <Gap height={25} />
                 <button css={styles.buttonDetail} onClick={onClick}>See Full Details</button>
             </div>
             <div css={styles.topImageBundles}>
