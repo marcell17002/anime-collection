@@ -23,7 +23,7 @@ const CollectionDetail = () => {
 
     useEffect(() => {
         const savedData = getCollectionDataById()
-        if (savedData !== undefined) {
+        if (savedData !== null) {
             setAnime(savedData)
             setData(savedData.data)
             setIsEmpty(false)
@@ -33,9 +33,14 @@ const CollectionDetail = () => {
 
     const getCollectionDataById = () => {
         const savedData = JSON.parse(localStorage.getItem('anime-collections'))
-        const tempData = savedData.filter(item => parseInt(params.id) === item.id)
-        setLoading(false)
-        return tempData[0]
+        if (savedData !== null) {
+            const tempData = savedData.filter(item => parseInt(params.id) === item.id)
+            setLoading(false)
+            return tempData[0]
+        } else {
+            return null
+        }
+
     }
 
 

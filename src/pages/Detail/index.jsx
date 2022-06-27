@@ -1,7 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import { useQuery } from '@apollo/client';
-import { css } from '@emotion/react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Gap } from '../../components/atoms';
@@ -88,7 +86,6 @@ const Detail = () => {
                     date
                 }]
                 const updateData = [...oldData, ...newData]
-                console.log('save as new', updateData)
                 localStorage.setItem('anime-collections', JSON.stringify(updateData));
                 setValue('')
                 setIsModalOpen(false)
@@ -98,7 +95,6 @@ const Detail = () => {
             }
         } else {
             const index = oldData.findIndex((item) => title === item.title)
-            console.log('datas', index, title)
             const dataAnime = [...oldData[index].data, anime]
             const newData = [{
                 id: Math.floor(Math.random() * 1000),
@@ -124,7 +120,6 @@ const Detail = () => {
             date
         }]
 
-        console.log('datas', newData)
         if (title !== '') {
             localStorage.setItem('anime-collections', JSON.stringify(newData))
             setTitle('')
