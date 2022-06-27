@@ -2,7 +2,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { styles } from './styles'
 
-const ModalList = ({ onCLickCancel, onCLickClose, onCLickSave, value, setValue }) => {
+const ModalInput = ({ onCLickCancel, onCLickClose, onCLickSave, type, value, setValue }) => {
     return (
         <div css={styles.modal}>
             <div css={styles.content}>
@@ -11,7 +11,10 @@ const ModalList = ({ onCLickCancel, onCLickClose, onCLickSave, value, setValue }
                         <h2 css={styles.textHeader}>Check Your Collection Title</h2>
                         <FontAwesomeIcon icon="times" css={styles.iconTimes} onClick={onCLickClose} />
                     </div>
-                    <input type="text" css={styles.inputText} onChange={setValue} value={value} placeholder="collection title" />
+                    <div>
+                        <div css={styles.textList}>my supper collections</div>
+                        <input type="text" css={styles.inputText} onChange={setValue} value={value} placeholder="collection title" />
+                    </div>
                     <div css={styles.bundleButton}>
                         <button css={styles.buttonCancel} onClick={onCLickCancel}>
                             Cancel
@@ -26,4 +29,4 @@ const ModalList = ({ onCLickCancel, onCLickClose, onCLickSave, value, setValue }
     )
 }
 
-export default ModalList
+export default ModalInput

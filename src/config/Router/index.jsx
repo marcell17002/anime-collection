@@ -9,7 +9,7 @@ const Router = () => {
                 <Route exact path="/" element={<Anime />} />
                 <Route path="/collection" element={<Collection />} />
                 <Route path="/collection-detail/:id" element={<CollectionDetail />} />
-                <Route path="/detail/:id" element={<Detail />} />
+                <Route exact path="/detail/:id" element={<Detail />} />
             </Routes>
         </BrowserRouter >
     )

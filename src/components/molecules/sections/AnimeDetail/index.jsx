@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Gap, Separator } from '../../../atoms'
 import { styles } from './styles'
 
-const AnimeDetail = ({ title, isAdult, coverImage, favourites, genres, episodes, duration, seasonYear, countryOfOrigin, description, onClick }) => {
+const AnimeDetail = ({ title, isAdult, coverImage, favourites, genres, episodes, duration, seasonYear, countryOfOrigin, description, onClick, isCollected, location }) => {
     return (
         <div css={styles.information}>
             <div css={styles.imageBundle}>
@@ -25,7 +25,7 @@ const AnimeDetail = ({ title, isAdult, coverImage, favourites, genres, episodes,
                         </div>
                     </div>
                     <div css={styles.additionalInfo}>
-                        <FontAwesomeIcon icon="heart" css={styles.iconHeartInActive} />
+                        <FontAwesomeIcon icon="heart" css={isCollected ? styles.iconHeartActive : styles.iconHeartInActive} />
                         <p>{favourites}</p>
                     </div>
                 </div>
@@ -52,7 +52,10 @@ const AnimeDetail = ({ title, isAdult, coverImage, favourites, genres, episodes,
                     </div>
                 </div>
                 <p css={styles.descriptionText}>{description}</p>
-                <button css={styles.buttonSave} onClick={onClick}>Add to My Collection</button>
+                {isCollected ?
+                    <button css={styles.buttonCollected} onClick={onClick}>Collected At {location}</button> :
+                    <button css={styles.buttonSave} onClick={onClick}>Add to My Collection</button>
+                }
             </div>
         </div>
     )

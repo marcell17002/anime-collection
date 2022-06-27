@@ -99,6 +99,14 @@ const additionalInfo = css({
 
 const iconHeartInActive = css({
     fontSize: 25,
+    color: '#878686',
+    [mq[0]]: {
+        fontSize: 30,
+    }
+})
+
+const iconHeartActive = css({
+    fontSize: 25,
     color: 'red',
     [mq[0]]: {
         fontSize: 30,
@@ -184,6 +192,26 @@ const buttonSave = css({
     }
 })
 
+const buttonCollected = css({
+    backgroundColor: '#22C55E',
+    padding: '15px 25px',
+    width: '100%',
+    border: 0,
+    borderRadius: 20,
+    fontSize: 20,
+    color: 'white',
+    fontWeight: 'bold',
+    marginTop: 20,
+    [mq[0]]: {
+        marginTop: 20,
+        width: 'auto'
+    },
+    ':hover': {
+        backgroundColor: '#86EFAC',
+
+    }
+})
+
 export const styles = {
     information,
     imageBundle,
@@ -198,6 +226,7 @@ export const styles = {
     detailTextGenre,
     additionalInfo,
     iconHeartInActive,
+    iconHeartActive,
     category,
     detailCategory,
     detailCategoryText,
@@ -206,5 +235,6 @@ export const styles = {
     iconCalendar,
     iconFlag,
     descriptionText,
-    buttonSave
+    buttonSave,
+    buttonCollected
 }

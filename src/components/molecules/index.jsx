@@ -7,6 +7,7 @@ import AnimeDetail from "./sections/AnimeDetail";
 import TopTrending from "./Banner/TopTrending";
 import InfoCollecitons from "./Banner/InfoCollections";
 import ModalInput from "./Modal/Input";
+import ModalList from "./Modal/List";
 
 export {
     Header,
@@ -16,6 +17,7 @@ export {
     AnimeInfo,
     AnimeDetail,
     ModalInput,
+    ModalList,
     InfoCollecitons,
     TopTrending,
 }

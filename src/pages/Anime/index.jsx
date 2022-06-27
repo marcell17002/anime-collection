@@ -87,6 +87,7 @@ const Anime = () => {
             <div css={styles.main}>
                 <Header />
                 <div css={styles.container}>
+
                     {!loading && <AnimeInfo
                         title={randomAnime.title.userPreferred}
                         genres={renderGenres(randomAnime.genres)}
@@ -95,6 +96,7 @@ const Anime = () => {
                         onClick={() => navigate(`/detail/${randomAnime.id}`)}
                     />}
                     <Gap height={50}></Gap>
+
                     <div css={styles.listBundle}>
                         <h1 css={styles.textTitleList}>Explore Your Anime</h1>
                         <p css={styles.textDescList}>Dive into our collection of Japanese animation from the classic blockbusters to the latest shows airing weekly</p>
@@ -119,8 +121,6 @@ const Anime = () => {
                     <Gap height={50}></Gap>
                     <InfoCollecitons onClick={() => navigate('/collection')} />
                     <Gap height={50}></Gap>
-
-
                 </div>
             </div>
             {isModalOpen ?
