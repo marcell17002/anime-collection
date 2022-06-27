@@ -76,31 +76,34 @@ const Detail = () => {
             if (item.length !== 0) id = key;
         })
 
-        const location = id !== null ? oldData[id].id : ''
+        const location = id !== null ? oldData[id].title : ''
         setLocation(location)
     }
 
     const saveToCollection = () => {
         setIsModalOpen(true)
-        const date = new Date().toLocaleString()
+        const date = new Date().toISOString()
         if (value !== '') {
             const newData = [{
-                id: value,
+                id: Math.floor(Math.random() * 1000),
+                title: value,
                 data: [anime],
                 date
             }]
             const updateData = [...oldData, ...newData]
             console.log('save as new', updateData)
             localStorage.setItem('anime-collections', JSON.stringify(updateData));
+            setValue('')
         } else {
-            const index = oldData.findIndex((item) => title === item.id)
+            const index = oldData.findIndex((item) => title === item.title)
+            console.log('datas', index, title)
             const dataAnime = [...oldData[index].data, anime]
             const newData = [{
-                id: title,
+                id: Math.floor(Math.random() * 1000),
+                title: title,
                 data: dataAnime,
                 date
             }]
-            console.log('data', newData)
             const updateData = [...oldData, ...newData]
             updateData.splice(index, 1)
             localStorage.setItem('anime-collections', JSON.stringify(updateData))
@@ -111,13 +114,15 @@ const Detail = () => {
 
     const saveNewCollection = () => {
         setIsModalOpen(true)
-        const date = new Date().toLocaleString()
+        const date = new Date().toISOString()
         const newData = [{
-            id: title,
+            id: Math.floor(Math.random() * 1000),
+            title: title,
             data: [anime],
             date
         }]
 
+        console.log('datas', newData)
         if (title !== '') {
             localStorage.setItem('anime-collections', JSON.stringify(newData))
             setTitle('')

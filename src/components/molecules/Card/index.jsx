@@ -9,13 +9,12 @@ const Card = ({ image, title, episodes, duration, to, onClick }) => {
     return (
         <div css={styles.card} >
             <NavLink to={to} css={styles.navlink}>
-
                 <img css={styles.cardImage} src={image} />
             </NavLink>
             <div css={styles.cardInfo}>
                 <div css={styles.bundleHeader}>
                     <h4 css={styles.cardTextHeader}>{title} </h4>
-                    <FontAwesomeIcon icon="heart" onClick={onClick} css={styles.iconHeartInActive} />
+                    <FontAwesomeIcon icon="trash" onClick={onClick} css={styles.iconTrash} />
                 </div>
                 <div css={styles.detail}>
                     <FontAwesomeIcon icon="film" css={styles.iconFilm} />

@@ -70,11 +70,12 @@ const bundleHeader = css({
     height: 25
 })
 
-const iconHeart = css({
-    color: 'red',
+const iconTrash = css({
+    color: '#E4E4E7',
     fontSize: 20,
     paddingLeft: 5,
     ':hover': {
+        color: 'red',
         fontSize: 24,
     }
 })
@@ -129,7 +130,7 @@ export const styles = {
     iconFilm,
     iconClock,
     bundleHeader,
-    iconHeart,
+    iconTrash,
     iconHeartInActive,
     iconCheck,
     textDetail,

@@ -138,7 +138,7 @@ const textListInActive = css({
 const textListActive = css({
     fontSize: 14,
     padding: 10,
-    backgroundColor: '#F5F5F4',
+    backgroundColor: '#E7E5E4',
     borderRadius: 10,
     [mq[0]]: {
         fontsize: 18,

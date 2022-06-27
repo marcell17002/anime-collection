@@ -5,11 +5,11 @@ import { styles } from './styles'
 const ModalInput = ({ onClickCancel, onClickClose, onClickSave, items, value, setValue, emitId }) => {
 
     const [isActive, setIsActive] = useState(false)
-    const [id, setId] = useState()
+    const [title, setTitle] = useState('')
 
-    const handleEmit = (id) => {
-        setId(id)
-        emitId(id)
+    const handleEmit = (title) => {
+        setTitle(title)
+        emitId(title)
         setIsActive(!isActive)
     }
 
@@ -22,7 +22,7 @@ const ModalInput = ({ onClickCancel, onClickClose, onClickSave, items, value, se
                         <FontAwesomeIcon icon="times" css={styles.iconTimes} onClick={onClickClose} />
                     </div>
                     <div>
-                        {items.map((item, key) => <div key={key} css={isActive && id === item.id ? styles.textListActive : styles.textListInActive} onClick={() => handleEmit(item.id)}>{item.id}</div>)}
+                        {items.map((item, key) => <div key={key} css={isActive && title === item.title ? styles.textListActive : styles.textListInActive} onClick={() => handleEmit(item.title)}>{item.title}</div>)}
                         <input type="text" css={styles.inputText} onChange={setValue} value={value} placeholder="collection title" />
                     </div>
                     <div css={styles.bundleButton}>

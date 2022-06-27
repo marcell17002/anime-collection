@@ -15,6 +15,7 @@ const Collection = () => {
     const [data, setData] = useState([])
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [value, setValue] = useState('')
+    const [id, setId] = useState(0)
     const [placeholder, setPlaceholder] = useState('')
 
 
@@ -58,13 +59,14 @@ const Collection = () => {
             const index = oldData.findIndex(item => id === item.id)
             const temp = {
                 ...oldData[index],
-                id: value,
+                title: value,
             }
             oldData.splice(index, 1)
             const updateData = [...oldData, ...[temp]]
             localStorage.setItem('anime-collections', JSON.stringify(updateData))
             setData(updateData)
             setIsModalOpen(false)
+            setValue('')
         }
     }
     return (
@@ -86,10 +88,11 @@ const Collection = () => {
                         <CarouselCollectionPage
                             key={key}
                             items={item.data}
-                            label={item.id}
+                            label={item.title}
                             onClickEdit={() => {
                                 setIsModalOpen(true)
-                                setPlaceholder(item.id)
+                                setId(item.id)
+                                setPlaceholder(item.title)
                             }}
                             onClickDelete={() => deleteCollection(item.id)}
                             to={`/collection-detail/${item.id}`}
@@ -108,7 +111,7 @@ const Collection = () => {
                         setValue('')
                         setIsModalOpen(false)
                     }}
-                    onClickSave={() => editCollection(placeholder)}
+                    onClickSave={() => editCollection(id)}
                     value={value}
                     setValue={event => setValue(event.target.value)}
                 />}
