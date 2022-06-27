@@ -7,6 +7,10 @@ const mq = breakpoints.map(
     bp => `@media (min-width: ${bp}px)`
 )
 
+const body = css({
+    position: 'relative'
+})
+
 const main = css({
     display: 'flex',
     flexDirection: 'column',
@@ -28,6 +32,7 @@ const container = css({
 
 
 export const styles = {
+    body,
     main,
     container,
 }

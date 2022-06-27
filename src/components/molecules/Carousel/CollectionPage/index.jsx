@@ -23,9 +23,10 @@ const breakpointCarousel = {
         spaceBetween: 20,
         slidesPerGroup: 1
     },
-
 }
-const CarouselDetailPage = ({ label, to }) => {
+
+
+const CarouselDetailPage = ({ label, to, items, onClickEdit, onClickDelete }) => {
     return (
         <div css={styles.bundleCollection}>
             <div css={styles.headerList}>
@@ -36,23 +37,28 @@ const CarouselDetailPage = ({ label, to }) => {
                     </NavLink>
                 </div>
                 <div css={styles.mainAction}>
-                    <button css={styles.buttonAction}>
+                    <button css={styles.buttonAction} onClick={onClickEdit}>
                         <FontAwesomeIcon icon="pen" css={styles.iconPen} />
                     </button>
-                    <button css={styles.buttonAction}>
+                    <button css={styles.buttonAction} onClick={onClickDelete}>
                         <FontAwesomeIcon icon="trash" css={styles.iconTrash} />
                     </button>
                 </div>
             </div>
             <Gap height={20}></Gap>
             <Swiper breakpoints={breakpointCarousel}>
-                <SwiperSlide><Card title="asdasd" to="/" image="https://s4.anilist.co/file/anilistcdn/media/anime/banner/1-T3PJUjFJyRwg.jpg"></Card></SwiperSlide>
-                <SwiperSlide><Card title="asdasd" to="/" image="https://s4.anilist.co/file/anilistcdn/media/anime/banner/1-T3PJUjFJyRwg.jpg"></Card></SwiperSlide>
-                <SwiperSlide><Card title="asdasd" to="/" image="https://s4.anilist.co/file/anilistcdn/media/anime/banner/1-T3PJUjFJyRwg.jpg"></Card></SwiperSlide>
-                <SwiperSlide><Card title="asdasd" to="/" image="https://s4.anilist.co/file/anilistcdn/media/anime/banner/1-T3PJUjFJyRwg.jpg"></Card></SwiperSlide>
-                <SwiperSlide><Card title="asdasd" to="/" image="https://s4.anilist.co/file/anilistcdn/media/anime/banner/1-T3PJUjFJyRwg.jpg"></Card></SwiperSlide>
-                <SwiperSlide><Card title="asdasd" to="/" image="https://s4.anilist.co/file/anilistcdn/media/anime/banner/1-T3PJUjFJyRwg.jpg"></Card></SwiperSlide>
-                <SwiperSlide><Card title="asdasd" to="/" image="https://s4.anilist.co/file/anilistcdn/media/anime/banner/1-T3PJUjFJyRwg.jpg"></Card></SwiperSlide>
+                {items.map((item, key) => (
+                    <SwiperSlide key={key}>
+                        <Card
+                            title={item.title.userPreferred}
+                            to={`/detail/${item.id}`}
+                            image={item.coverImage.extraLarge}
+                            episodes={item.episodes}
+                            duration={item.duration}
+                        >
+                        </Card>
+                    </SwiperSlide>
+                ))}
             </Swiper>
         </div>
 

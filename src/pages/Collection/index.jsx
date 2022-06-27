@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { Gap } from '../../components/atoms'
-import { TopTrending, CarouselCollectionPage, Header } from '../../components/molecules'
+import { TopTrending, CarouselCollectionPage, Header, ModalInput } from '../../components/molecules'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { styles } from './styles';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import query from '../../config/GraphQl/query';
 const Collection = () => {
@@ -12,6 +12,10 @@ const Collection = () => {
     )
     const [recommendationAnime, setRecommendationAnime] = useState([])
     const [loading, setLoading] = useState(true)
+    const [data, setData] = useState([])
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [value, setValue] = useState('')
+    const [placeholder, setPlaceholder] = useState('')
 
 
     useQuery(query.ANIME_DETAILS, {
@@ -28,26 +32,86 @@ const Collection = () => {
         }
     })
 
+    useEffect(() => {
+        setData(getCollectionData())
+    }, [])
 
+
+    const getCollectionData = () => {
+        const result = JSON.parse(localStorage.getItem('anime-collections'))
+        return result
+    }
+
+
+    const deleteCollection = (id) => {
+        const oldData = JSON.parse(localStorage.getItem('anime-collections'))
+        const index = oldData.findIndex(item => id === item.id)
+        const updateData = oldData
+        updateData.splice(index, 1)
+        setData(updateData)
+        localStorage.setItem('anime-collections', JSON.stringify(updateData))
+    }
+
+    const editCollection = (id) => {
+        if (value !== '') {
+            const oldData = JSON.parse(localStorage.getItem('anime-collections'))
+            const index = oldData.findIndex(item => id === item.id)
+            const temp = {
+                ...oldData[index],
+                id: value,
+            }
+            oldData.splice(index, 1)
+            const updateData = [...oldData, ...[temp]]
+            localStorage.setItem('anime-collections', JSON.stringify(updateData))
+            setData(updateData)
+            setIsModalOpen(false)
+        }
+    }
     return (
-        <div css={styles.main}>
-            <Header />
-            <div css={styles.container}>
-                {!loading && <TopTrending
-                    title={recommendationAnime.title.userPreferred}
-                    image={recommendationAnime.bannerImage === null ? recommendationAnime.coverImage.extraLarge : recommendationAnime.bannerImage}
-                    episodes={recommendationAnime.episodes}
-                    duration={recommendationAnime.duration}
-                    year={recommendationAnime.seasonYear}
-                    trending={recommendationAnime.trending}
+        <div css={styles.body}>
+            <div css={styles.main}>
+                <Header />
+                <div css={styles.container}>
+                    {!loading && <TopTrending
+                        title={recommendationAnime.title.userPreferred}
+                        image={recommendationAnime.bannerImage === null ? recommendationAnime.coverImage.extraLarge : recommendationAnime.bannerImage}
+                        episodes={recommendationAnime.episodes}
+                        duration={recommendationAnime.duration}
+                        year={recommendationAnime.seasonYear}
+                        trending={recommendationAnime.trending}
 
-                />}
-
-                <Gap height={50}></Gap>
-                <CarouselCollectionPage label="My Popular Collections" to="/collection-detail/1" />
-                <Gap height={50}></Gap>
-                <CarouselCollectionPage label="My Popular Collections" to="/collection-detail/1" />
+                    />}
+                    <Gap height={50}></Gap>
+                    {data.map((item, key) => (
+                        <CarouselCollectionPage
+                            key={key}
+                            items={item.data}
+                            label={item.id}
+                            onClickEdit={() => {
+                                setIsModalOpen(true)
+                                setPlaceholder(item.id)
+                            }}
+                            onClickDelete={() => deleteCollection(item.id)}
+                            to={`/collection-detail/${item.id}`}
+                        />
+                    ))}
+                </div>
             </div>
+            {isModalOpen &&
+                <ModalInput
+                    placeholder={placeholder}
+                    onClickCancel={() => {
+                        setValue('')
+                        setIsModalOpen(false)
+                    }}
+                    onClickClose={() => {
+                        setValue('')
+                        setIsModalOpen(false)
+                    }}
+                    onClickSave={() => editCollection(placeholder)}
+                    value={value}
+                    setValue={event => setValue(event.target.value)}
+                />}
         </div>
     )
 }

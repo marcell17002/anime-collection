@@ -124,7 +124,7 @@ const Anime = () => {
                 </div>
             </div>
             {isModalOpen ?
-                <ModalInput onCLickClose={() => setIsModalOpen(false)} />
+                <ModalInput onClickClose={() => setIsModalOpen(false)} />
                 : ''}
         </div>
     )

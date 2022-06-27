@@ -160,9 +160,9 @@ const Detail = () => {
             {isModalOpen && isNew &&
                 <ModalInput
                     type={typeModal}
-                    onCLickCancel={() => { setIsModalOpen(false); setTitle('') }}
-                    onCLickClose={() => { setIsModalOpen(false); setTitle('') }}
-                    onCLickSave={() => saveNewCollection()}
+                    onClickCancel={() => { setIsModalOpen(false); setTitle('') }}
+                    onClickClose={() => { setIsModalOpen(false); setTitle('') }}
+                    onClickSave={() => saveNewCollection()}
                     value={title}
                     setValue={(event) => setTitle(event.target.value)}
                 />
@@ -170,9 +170,9 @@ const Detail = () => {
             {isModalOpen && !isNew &&
                 <ModalList
                     type={typeModal}
-                    onCLickCancel={() => { setIsModalOpen(false); setTitle('') }}
-                    onCLickClose={() => { setIsModalOpen(false); setTitle('') }}
-                    onCLickSave={() => saveToCollection()}
+                    onClickCancel={() => { setIsModalOpen(false); setTitle('') }}
+                    onClickClose={() => { setIsModalOpen(false); setTitle('') }}
+                    onClickSave={() => saveToCollection()}
                     emitId={(value) => {
                         setValue('')
                         setTitle(value)
