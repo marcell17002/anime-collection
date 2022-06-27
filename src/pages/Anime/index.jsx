@@ -4,10 +4,9 @@ import { css, jsx } from '@emotion/react'
 import { useEffect, useState } from 'react'
 import { useLazyQuery, useQuery, refetch } from "@apollo/client";
 import query from '../../config/GraphQl/query';
-import { Header, Card, AnimeInfo, ModalInput, InfoCollecitons } from '../../components/molecules';
+import { Header, Card, AnimeInfo, ModalInput, InfoCollecitons, Footer } from '../../components/molecules';
 import { styles } from './styles';
 import { Gap } from '../../components/atoms';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom';
 
 const Anime = () => {
@@ -75,13 +74,6 @@ const Anime = () => {
         }
     }
 
-
-    const breakpoints = [992]
-    const mq = breakpoints.map(
-        bp => `@media (min-width: ${bp}px)`
-    )
-
-
     return (
         <div css={styles.body}>
             <div css={styles.main}>
@@ -118,10 +110,11 @@ const Anime = () => {
                         }}>Load More</button>
                     </div>
 
-                    <Gap height={50}></Gap>
+                    <Gap height={100}></Gap>
                     <InfoCollecitons onClick={() => navigate('/collection')} />
-                    <Gap height={50}></Gap>
+                    <Footer />
                 </div>
+
             </div>
             {isModalOpen ?
                 <ModalInput onClickClose={() => setIsModalOpen(false)} />

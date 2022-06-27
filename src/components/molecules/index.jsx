@@ -2,12 +2,13 @@ import Header from "./Header";
 import Card from "./Card";
 import CarouselDetailPage from "./Carousel/DetailPage";
 import CarouselCollectionPage from "./Carousel/CollectionPage";
-import AnimeInfo from "./sections/AnimeInfo";
-import AnimeDetail from "./sections/AnimeDetail";
+import AnimeInfo from "./Sections/AnimeInfo";
+import AnimeDetail from "./Sections/AnimeDetail";
 import TopTrending from "./Banner/TopTrending";
 import InfoCollecitons from "./Banner/InfoCollections";
 import ModalInput from "./Modal/Input";
 import ModalList from "./Modal/List";
+import Footer from "./Footer";
 
 export {
     Header,
@@ -20,4 +21,5 @@ export {
     ModalList,
     InfoCollecitons,
     TopTrending,
+    Footer
 }

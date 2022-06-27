@@ -13,7 +13,7 @@ const body = css({
 
 const main = css({
     display: 'flex',
-    minHeight: '100vw',
+    minHeight: '100%',
     flexDirection: 'column',
     'h1,h3,p': {
         margin: 0

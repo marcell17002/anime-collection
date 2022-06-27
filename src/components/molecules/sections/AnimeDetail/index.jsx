@@ -51,7 +51,7 @@ const AnimeDetail = ({ title, isAdult, coverImage, favourites, genres, episodes,
                         <p css={styles.detailCategoryText}>{countryOfOrigin} </p>
                     </div>
                 </div>
-                <p css={styles.descriptionText}>{description}</p>
+                <p css={styles.descriptionText} dangerouslySetInnerHTML={{ __html: description }} />
                 {isCollected ?
                     <button css={styles.buttonCollected} onClick={onClick}>Collected At {location}</button> :
                     <button css={styles.buttonSave} onClick={onClick}>Add to My Collection</button>

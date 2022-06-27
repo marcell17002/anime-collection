@@ -3,7 +3,7 @@ import { css } from '@emotion/react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
 import { Gap, Separator } from '../../components/atoms'
-import { Card, Header, ModalInput } from '../../components/molecules'
+import { Card, Footer, Header, ModalInput } from '../../components/molecules'
 import { useQuery } from '@apollo/client/react'
 import query from '../../config/GraphQl/query'
 import { styles } from './styles'
@@ -126,6 +126,7 @@ const CollectionDetail = () => {
                                         title={item.title.userPreferred}
                                         image={item.coverImage.extraLarge}
                                         episodes={item.episodes}
+                                        isEdit
                                         duration={item.duration}
                                         onClick={() => removeAnime(item.id)}
                                         to={`/detail/${item.id}`} />
@@ -134,6 +135,7 @@ const CollectionDetail = () => {
                         </>
                     )}
                 </div>
+                <Footer />
             </div>
             {isModalOpen &&
                 <ModalInput

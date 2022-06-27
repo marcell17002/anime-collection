@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Gap } from '../../components/atoms';
-import { AnimeDetail, CarouselDetailPage, Header, ModalInput, ModalList } from '../../components/molecules';
+import { AnimeDetail, CarouselDetailPage, Footer, Header, ModalInput, ModalList } from '../../components/molecules';
 import { styles } from './styles';
 import { query } from '../../config/GraphQl/query'
 
@@ -173,6 +173,7 @@ const Detail = () => {
                         }
                     </div>
                 </div>
+                <Footer />
             </div>
             {isModalOpen && isNew &&
                 <ModalInput

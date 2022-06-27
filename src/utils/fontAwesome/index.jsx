@@ -15,7 +15,18 @@ import {
     faTimes
 } from '@fortawesome/free-solid-svg-icons'
 
+import {
+    faInstagram,
+    faGithub,
+    faWhatsapp,
+    faLinkedin
+} from '@fortawesome/free-brands-svg-icons'
+
 library.add(
+    faInstagram,
+    faGithub,
+    faWhatsapp,
+    faLinkedin,
     faCheckSquare,
     faCheck,
     faCoffee,
@@ -28,5 +39,5 @@ library.add(
     faTrash,
     faPen,
     faArrowRight,
-    faTimes
+    faTimes,
 )

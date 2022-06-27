@@ -4,7 +4,7 @@ import { styles } from './styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { css } from '@emotion/react'
 
-const Card = ({ image, title, episodes, duration, to, onClick }) => {
+const Card = ({ image, title, episodes, duration, to, onClick, isEdit }) => {
 
     return (
         <div css={styles.card} >
@@ -14,7 +14,9 @@ const Card = ({ image, title, episodes, duration, to, onClick }) => {
             <div css={styles.cardInfo}>
                 <div css={styles.bundleHeader}>
                     <h4 css={styles.cardTextHeader}>{title} </h4>
-                    <FontAwesomeIcon icon="trash" onClick={onClick} css={styles.iconTrash} />
+                    {isEdit &&
+                        <FontAwesomeIcon icon="trash" onClick={onClick} css={styles.iconTrash} />
+                    }
                 </div>
                 <div css={styles.detail}>
                     <FontAwesomeIcon icon="film" css={styles.iconFilm} />

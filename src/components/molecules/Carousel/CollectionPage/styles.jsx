@@ -24,12 +24,15 @@ const buttonExplore = css({
     color: '#3B82F6',
     textDecoration: 'none',
     marginLeft: 20,
-    display: 'none',
-    [mq[0]]: {
-        display: 'block'
-    },
     ':hover': {
         color: '#93C5FD'
+    },
+    h3: {
+        fontSize: 16,
+        [mq[0]]: {
+            fontSize: 20,
+            paddingTop: 6
+        }
     }
 })
 
@@ -45,8 +48,9 @@ const mainTitle = css({
 
 const textTitle = css({
     fontSize: 20,
+    margin: 0,
     [mq[0]]: {
-        fontSize: 24
+        fontSize: 30
     }
 })
 

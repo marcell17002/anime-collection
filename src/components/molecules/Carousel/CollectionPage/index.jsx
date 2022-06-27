@@ -33,7 +33,7 @@ const CarouselDetailPage = ({ label, to, items, onClickEdit, onClickDelete }) =>
                 <div css={styles.mainTitle}>
                     <h1 css={styles.textTitle}>{label}</h1>
                     <NavLink to={to} css={styles.buttonExplore}>
-                        <h3 >Explore All</h3>
+                        <h3>Explore All</h3>
                     </NavLink>
                 </div>
                 <div css={styles.mainAction}>

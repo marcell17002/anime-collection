@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { Gap } from '../../components/atoms'
-import { TopTrending, CarouselCollectionPage, Header, ModalInput } from '../../components/molecules'
+import { TopTrending, CarouselCollectionPage, Header, ModalInput, Footer } from '../../components/molecules'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { styles } from './styles';
 import { useEffect, useState } from 'react';
@@ -107,6 +107,7 @@ const Collection = () => {
                         />
                     ))}
                 </div>
+                <Footer />
             </div>
             {isModalOpen &&
                 <ModalInput

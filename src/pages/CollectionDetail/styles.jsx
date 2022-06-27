@@ -33,7 +33,9 @@ const container = css({
 const headerList = css({
     display: 'flex',
     alignItems: 'start',
-    marginTop: 100
+    marginTop: 100,
+    padding: '0px 20px',
+
 })
 
 const buttonAction = css({
@@ -81,6 +83,7 @@ const inputTitle = css({
 const animeList = css({
     display: 'flex',
     flexWrap: 'wrap',
+    padding: '0px 20px',
     maxWidth: 1248,
     justifyContent: 'space-between',
 
