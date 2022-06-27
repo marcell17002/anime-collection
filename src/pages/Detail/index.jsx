@@ -17,6 +17,7 @@ const Detail = () => {
     const [loading, setLoading] = useState(true)
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [title, setTitle] = useState('')
+    const [value, setValue] = useState('')
     const [typeModal, setTypeModal] = useState('input')
     const [isNew, setIsNew] = useState(true)
     const [location, setLocation] = useState('')
@@ -63,19 +64,52 @@ const Detail = () => {
             setTypeModal('list')
             setLocationCollectedData()
         }
+
     }, [anime])
 
     const setLocationCollectedData = () => {
+        let id = null
         const index = oldData.map((item) => {
-            const result = item.data.filter((key) => key.id === parseInt(params.id))
-            if (result) return item.id
+            return item.data.filter((key) => key.id === parseInt(params.id))
         })
-        index.map(item => {
-            if (item !== '') return setLocation(item)
+        index.map((item, key) => {
+            if (item.length !== 0) id = key;
         })
+
+        const location = id !== null ? oldData[id].id : ''
+        setLocation(location)
     }
 
     const saveToCollection = () => {
+        setIsModalOpen(true)
+        const date = new Date().toLocaleString()
+        if (value !== '') {
+            const newData = [{
+                id: value,
+                data: [anime],
+                date
+            }]
+            const updateData = [...oldData, ...newData]
+            console.log('save as new', updateData)
+            localStorage.setItem('anime-collections', JSON.stringify(updateData));
+        } else {
+            const index = oldData.findIndex((item) => title === item.id)
+            const dataAnime = [...oldData[index].data, anime]
+            const newData = [{
+                id: title,
+                data: dataAnime,
+                date
+            }]
+            console.log('data', newData)
+            const updateData = [...oldData, ...newData]
+            updateData.splice(index, 1)
+            localStorage.setItem('anime-collections', JSON.stringify(updateData))
+        }
+        setIsModalOpen(false)
+    }
+
+
+    const saveNewCollection = () => {
         setIsModalOpen(true)
         const date = new Date().toLocaleString()
         const newData = [{
@@ -84,30 +118,11 @@ const Detail = () => {
             date
         }]
 
-        if (oldData === null) {
-            if (title !== '') {
-                localStorage.setItem('anime-collections', JSON.stringify(newData))
-                setTitle('')
-                setIsModalOpen(false)
-                setIsNew(false)
-            }
-        } else {
-            const index = oldData.findIndex((item) => title === item.id)
-            if (index === -1) {
-                const updateData = [...oldData, ...newData]
-                localStorage.setItem('anime-collections', JSON.stringify(updateData));
-
-            } else {
-                const dataAnime = [...oldData[index].data, anime]
-                const newData = [{
-                    id: title,
-                    data: dataAnime,
-                    date
-                }]
-                const updateData = [...oldData, ...newData]
-                updateData.splice(index, 1)
-                localStorage.setItem('anime-collections', JSON.stringify(updateData));
-            }
+        if (title !== '') {
+            localStorage.setItem('anime-collections', JSON.stringify(newData))
+            setTitle('')
+            setIsModalOpen(false)
+            setIsNew(false)
         }
     }
 
@@ -133,7 +148,7 @@ const Detail = () => {
                                     isCollected={location !== ''}
                                     location={location}
                                     description={anime.description}
-                                    onClick={() => saveToCollection()} />
+                                    onClick={() => setIsModalOpen(true)} />
                                 <Gap height={50}></Gap>
                                 <CarouselDetailPage items={recommendationAnime} />
                             </>
@@ -145,9 +160,9 @@ const Detail = () => {
             {isModalOpen && isNew &&
                 <ModalInput
                     type={typeModal}
-                    onCLickCancel={() => setIsModalOpen(false)}
-                    onCLickClose={() => setIsModalOpen(false)}
-                    onCLickSave={() => saveToCollection()}
+                    onCLickCancel={() => { setIsModalOpen(false); setTitle('') }}
+                    onCLickClose={() => { setIsModalOpen(false); setTitle('') }}
+                    onCLickSave={() => saveNewCollection()}
                     value={title}
                     setValue={(event) => setTitle(event.target.value)}
                 />
@@ -155,11 +170,16 @@ const Detail = () => {
             {isModalOpen && !isNew &&
                 <ModalList
                     type={typeModal}
-                    onCLickCancel={() => setIsModalOpen(false)}
-                    onCLickClose={() => setIsModalOpen(false)}
+                    onCLickCancel={() => { setIsModalOpen(false); setTitle('') }}
+                    onCLickClose={() => { setIsModalOpen(false); setTitle('') }}
                     onCLickSave={() => saveToCollection()}
-                    value={title}
-                    setValue={(event) => setTitle(event.target.value)}
+                    emitId={(value) => {
+                        setValue('')
+                        setTitle(value)
+                    }}
+                    value={value}
+                    items={oldData}
+                    setValue={(event) => setValue(event.target.value)}
                 />
             }
         </div>

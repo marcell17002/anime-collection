@@ -27,6 +27,8 @@ const Collection = () => {
             setLoading(false)
         }
     })
+
+
     return (
         <div css={styles.main}>
             <Header />

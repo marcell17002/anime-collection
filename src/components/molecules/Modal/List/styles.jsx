@@ -39,7 +39,7 @@ const textHeader = css({
 const inputText = css({
     marginTop: 30,
     border: 0,
-    backgroundColor: '#E7E5E4',
+    backgroundColor: '#F5F5F4',
     padding: '15px 20px',
     borderRadius: 10,
     fontSize: 16,
@@ -126,14 +126,23 @@ const iconTimes = css({
     }
 })
 
-const textList = css({
+const textListInActive = css({
     fontSize: 14,
     padding: 10,
-    borderBottom: '2px solid #E7E5E4',
     [mq[0]]: {
         fontsize: 18,
         padding: 15,
+    }
+})
 
+const textListActive = css({
+    fontSize: 14,
+    padding: 10,
+    backgroundColor: '#F5F5F4',
+    borderRadius: 10,
+    [mq[0]]: {
+        fontsize: 18,
+        padding: 15,
     }
 })
 
@@ -148,5 +157,6 @@ export const styles = {
     subContent,
     bundleTitle,
     iconTimes,
-    textList
+    textListInActive,
+    textListActive
 }

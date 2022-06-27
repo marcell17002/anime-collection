@@ -1,8 +1,18 @@
 /** @jsxImportSource @emotion/react */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useState } from 'react'
 import { styles } from './styles'
+const ModalInput = ({ onCLickCancel, onCLickClose, onCLickSave, items, value, setValue, emitId }) => {
 
-const ModalInput = ({ onCLickCancel, onCLickClose, onCLickSave, type, value, setValue }) => {
+    const [isActive, setIsActive] = useState(false)
+    const [id, setId] = useState()
+
+    const handleEmit = (id) => {
+        setId(id)
+        emitId(id)
+        setIsActive(!isActive)
+    }
+
     return (
         <div css={styles.modal}>
             <div css={styles.content}>
@@ -12,7 +22,7 @@ const ModalInput = ({ onCLickCancel, onCLickClose, onCLickSave, type, value, set
                         <FontAwesomeIcon icon="times" css={styles.iconTimes} onClick={onCLickClose} />
                     </div>
                     <div>
-                        <div css={styles.textList}>my supper collections</div>
+                        {items.map((item, key) => <div key={key} css={isActive && id === item.id ? styles.textListActive : styles.textListInActive} onClick={() => handleEmit(item.id)}>{item.id}</div>)}
                         <input type="text" css={styles.inputText} onChange={setValue} value={value} placeholder="collection title" />
                     </div>
                     <div css={styles.bundleButton}>
