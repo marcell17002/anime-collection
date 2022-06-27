@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { Gap } from '../../../atoms'
 import { styles } from './styles'
+
 const AnimeInfo = ({ title, genres, imageBanner, imageCover, onClick }) => {
     return (
         <div css={styles.topPick}>
