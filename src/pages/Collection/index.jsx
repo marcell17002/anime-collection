@@ -18,6 +18,7 @@ const Collection = () => {
     const [id, setId] = useState(0)
     const [placeholder, setPlaceholder] = useState('')
     const [info, setInfo] = useState('')
+    const [isEmpty, setIsEmpty] = useState(true)
 
     useQuery(query.ANIME_DETAILS, {
         variables: { id: randomId },
@@ -34,8 +35,11 @@ const Collection = () => {
     })
 
     useEffect(() => {
-        setData(getCollectionData())
-        console.log('dtas', data)
+        const result = getCollectionData()
+        if (result !== null) {
+            setData(result)
+            setIsEmpty(false)
+        }
     }, [])
 
 
@@ -93,7 +97,7 @@ const Collection = () => {
 
                     />}
                     <Gap height={50} />
-                    {data.length === 0 ? <Error /> :
+                    {isEmpty ? <Error /> :
                         data.map((item, key) => (
                             <CarouselCollectionPage
                                 key={key}
@@ -113,7 +117,7 @@ const Collection = () => {
                 </div>
                 <Footer />
             </div>
-            {isModalOpen &&
+            {isModalOpen && !isEmpty &&
                 <ModalInput
                     placeholder={placeholder}
                     onClickCancel={() => {
