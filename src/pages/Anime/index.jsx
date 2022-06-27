@@ -1,13 +1,12 @@
 /** @jsxImportSource @emotion/react */
-import { css, jsx } from '@emotion/react'
-
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useLazyQuery, useQuery, refetch } from "@apollo/client";
 import query from '../../config/GraphQl/query';
 import { Header, Card, AnimeInfo, ModalInput, InfoCollecitons, Footer } from '../../components/molecules';
 import { styles } from './styles';
 import { Gap } from '../../components/atoms';
 import { useNavigate } from 'react-router-dom';
+import { parseStringwithSlash } from '../../utils';
 
 const Anime = () => {
     const navigate = useNavigate()
@@ -53,16 +52,6 @@ const Anime = () => {
         }
     })
 
-    const renderGenres = (data) => {
-        let result = ''
-        data.map((item, key) => {
-            if (key === data.length - 1) return result += `${item}`
-            return result += `${item} / `
-        })
-        return result
-    }
-
-
     const saveToCollection = (id) => {
         setIsModalOpen(true)
         const oldData = JSON.parse(localStorage.getItem('anime-collections'))
@@ -79,15 +68,14 @@ const Anime = () => {
             <div css={styles.main}>
                 <Header />
                 <div css={styles.container}>
-
                     {!loading && <AnimeInfo
                         title={randomAnime.title.userPreferred}
-                        genres={renderGenres(randomAnime.genres)}
+                        genres={parseStringwithSlash(randomAnime.genres)}
                         imageCover={randomAnime.coverImage.extraLarge}
                         imageBanner={randomAnime.bannerImage === null ? randomAnime.coverImage.extraLarge : randomAnime.bannerImage}
                         onClick={() => navigate(`/detail/${randomAnime.id}`)}
                     />}
-                    <Gap height={50}></Gap>
+                    <Gap height={50} />
 
                     <div css={styles.listBundle}>
                         <h1 css={styles.textTitleList}>Explore Your Anime</h1>
@@ -110,7 +98,7 @@ const Anime = () => {
                         }}>Load More</button>
                     </div>
 
-                    <Gap height={100}></Gap>
+                    <Gap height={100} />
                     <InfoCollecitons onClick={() => navigate('/collection')} />
                     <Footer />
                 </div>

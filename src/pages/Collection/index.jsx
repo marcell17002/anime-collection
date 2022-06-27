@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { Gap } from '../../components/atoms'
-import { TopTrending, CarouselCollectionPage, Header, ModalInput, Footer } from '../../components/molecules'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { TopTrending, CarouselCollectionPage, Header, ModalInput, Footer, Error } from '../../components/molecules'
 import { styles } from './styles';
 import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import query from '../../config/GraphQl/query';
+
 const Collection = () => {
     const [randomId, setRandomId] = useState(() =>
         Math.floor(Math.random() * 10000)
@@ -35,6 +35,7 @@ const Collection = () => {
 
     useEffect(() => {
         setData(getCollectionData())
+        console.log('dtas', data)
     }, [])
 
 
@@ -76,6 +77,7 @@ const Collection = () => {
             setInfo("oops, there's some special character")
         }
     }
+
     return (
         <div css={styles.body}>
             <div css={styles.main}>
@@ -90,22 +92,24 @@ const Collection = () => {
                         trending={recommendationAnime.trending}
 
                     />}
-                    <Gap height={50}></Gap>
-                    {data.map((item, key) => (
-                        <CarouselCollectionPage
-                            key={key}
-                            items={item.data}
-                            label={item.title}
-                            onClickEdit={() => {
-                                setInfo('')
-                                setIsModalOpen(true)
-                                setId(item.id)
-                                setPlaceholder(item.title)
-                            }}
-                            onClickDelete={() => deleteCollection(item.id)}
-                            to={`/collection-detail/${item.id}`}
-                        />
-                    ))}
+                    <Gap height={50} />
+                    {data.length === 0 ? <Error /> :
+                        data.map((item, key) => (
+                            <CarouselCollectionPage
+                                key={key}
+                                items={item.data}
+                                label={item.title}
+                                onClickEdit={() => {
+                                    setInfo('')
+                                    setIsModalOpen(true)
+                                    setId(item.id)
+                                    setPlaceholder(item.title)
+                                }}
+                                onClickDelete={() => deleteCollection(item.id)}
+                                to={`/collection-detail/${item.id}`}
+                            />
+                        ))
+                    }
                 </div>
                 <Footer />
             </div>

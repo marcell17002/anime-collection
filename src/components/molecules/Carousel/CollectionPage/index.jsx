@@ -45,7 +45,7 @@ const CarouselDetailPage = ({ label, to, items, onClickEdit, onClickDelete }) =>
                     </button>
                 </div>
             </div>
-            <Gap height={20}></Gap>
+            <Gap height={20} />
             <Swiper breakpoints={breakpointCarousel}>
                 {items.map((item, key) => (
                     <SwiperSlide key={key}>

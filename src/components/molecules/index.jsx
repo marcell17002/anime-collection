@@ -9,6 +9,7 @@ import InfoCollecitons from "./Banner/InfoCollections";
 import ModalInput from "./Modal/Input";
 import ModalList from "./Modal/List";
 import Footer from "./Footer";
+import Error from "./Error";
 
 export {
     Header,
@@ -21,5 +22,6 @@ export {
     ModalList,
     InfoCollecitons,
     TopTrending,
-    Footer
+    Footer,
+    Error
 }

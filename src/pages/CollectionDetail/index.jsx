@@ -3,25 +3,31 @@ import { css } from '@emotion/react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
 import { Gap, Separator } from '../../components/atoms'
-import { Card, Footer, Header, ModalInput } from '../../components/molecules'
+import { Card, Error, Footer, Header, ModalInput } from '../../components/molecules'
 import { useQuery } from '@apollo/client/react'
 import query from '../../config/GraphQl/query'
 import { styles } from './styles'
 import { useParams } from 'react-router-dom'
+import { dateFormat } from '../../utils'
 
 const CollectionDetail = () => {
     const params = useParams()
     const [anime, setAnime] = useState({})
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
+    const [isEmpty, setIsEmpty] = useState(true)
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [value, setValue] = useState('')
     const [info, setInfo] = useState('')
 
 
     useEffect(() => {
-        setAnime(getCollectionDataById())
-        setData(getCollectionDataById().data)
+        const savedData = getCollectionDataById()
+        if (savedData !== undefined) {
+            setAnime(savedData)
+            setData(savedData.data)
+            setIsEmpty(false)
+        }
     }, [])
 
 
@@ -32,33 +38,6 @@ const CollectionDetail = () => {
         return tempData[0]
     }
 
-    const dateFormat = (date) => {
-        const months = [
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'August',
-            'September',
-            'October',
-            'November',
-            'Desember'
-        ]
-
-        const dateParsed = new Date(date)
-        const monthName = months[dateParsed.getMonth()]
-
-        const timeParse = date.split('T')
-        const timeParsed = timeParse[0]
-
-        const year = timeParsed.split('-')[0]
-        const newDate = timeParsed.split('-')[2]
-
-        return `${newDate} ${monthName} ${year}`
-    }
 
     const hadSpecialChar = (payload) => {
         var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
@@ -104,7 +83,7 @@ const CollectionDetail = () => {
             <div css={styles.main}>
                 <Header />
                 <div css={styles.container}>
-                    {!loading && (
+                    {!loading && !isEmpty ? (
                         <>
                             <div css={styles.headerList}>
                                 <div css={styles.mainTitle}>
@@ -118,7 +97,7 @@ const CollectionDetail = () => {
                                     <FontAwesomeIcon icon="pen" css={styles.iconPen} />
                                 </button>
                             </div>
-                            <Gap height={20}></Gap>
+                            <Gap height={20} />
                             <div css={styles.animeList}>
                                 {data.map((item, key) => (
                                     <Card
@@ -132,12 +111,16 @@ const CollectionDetail = () => {
                                         to={`/detail/${item.id}`} />
                                 ))}
                             </div>
+                        </>) :
+                        <>
+                            <Gap height={100} />
+                            <Error />
                         </>
-                    )}
+                    }
                 </div>
                 <Footer />
             </div>
-            {isModalOpen &&
+            {isModalOpen && !isEmpty &&
                 <ModalInput
                     onClickCancel={() => {
                         setValue('')

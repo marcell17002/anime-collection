@@ -8,6 +8,7 @@ import { Gap } from '../../components/atoms';
 import { AnimeDetail, CarouselDetailPage, Footer, Header, ModalInput, ModalList } from '../../components/molecules';
 import { styles } from './styles';
 import { query } from '../../config/GraphQl/query'
+import { parseStringwithComma } from '../../utils';
 
 const Detail = () => {
     const params = useParams()
@@ -43,17 +44,6 @@ const Detail = () => {
             setLoading(false)
         }
     })
-
-
-    const renderGenres = (data) => {
-        let result = ''
-        data.map((item, key) => {
-            if (key === data.length - 2) return result += `${item} and `
-            else if (key === data.length - 1) return result += `${item}`
-            return result += `${item}, `
-        })
-        return result
-    }
 
     useEffect(() => {
         if (oldData === null) {
@@ -157,7 +147,7 @@ const Detail = () => {
                                     isAdult={anime.isAdult}
                                     coverImage={anime.coverImage.extraLarge}
                                     favourites={anime.favourites}
-                                    genres={renderGenres(anime.genres)}
+                                    genres={parseStringwithComma(anime.genres)}
                                     episodes={anime.episodes}
                                     duration={anime.duration}
                                     seasonYear={anime.seasonYear}
@@ -166,7 +156,7 @@ const Detail = () => {
                                     location={location}
                                     description={anime.description}
                                     onClick={() => setIsModalOpen(true)} />
-                                <Gap height={50}></Gap>
+                                <Gap height={50} />
                                 <CarouselDetailPage items={recommendationAnime} />
                             </>
                         ) : <div />

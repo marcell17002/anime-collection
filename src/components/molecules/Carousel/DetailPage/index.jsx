@@ -32,7 +32,7 @@ const CarouselDetailPage = ({ items }) => {
             <div css={styles.mainTitle}>
                 <h1 css={styles.textTitle}>Recommendation For You</h1>
             </div>
-            <Gap height={20}></Gap>
+            <Gap height={20} />
             <Swiper breakpoints={breakpointCarousel}
                 speed={6000}
                 autoplay={{
