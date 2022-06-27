@@ -146,6 +146,14 @@ const textListActive = css({
     }
 })
 
+const textInfo = css({
+    fontSize: 18,
+    fontStyle: 'italic',
+    color: 'gray',
+    margin: 0,
+    paddingTop: 10
+})
+
 export const styles = {
     modal,
     content,
@@ -158,5 +166,6 @@ export const styles = {
     bundleTitle,
     iconTimes,
     textListInActive,
-    textListActive
+    textListActive,
+    textInfo
 }

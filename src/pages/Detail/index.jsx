@@ -21,6 +21,7 @@ const Detail = () => {
     const [typeModal, setTypeModal] = useState('input')
     const [isNew, setIsNew] = useState(true)
     const [location, setLocation] = useState('')
+    const [info, setInfo] = useState('')
     const oldData = JSON.parse(localStorage.getItem('anime-collections'))
 
 
@@ -80,20 +81,31 @@ const Detail = () => {
         setLocation(location)
     }
 
+    const hadSpecialChar = (payload) => {
+        var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
+        return format.test(payload)
+    }
+
     const saveToCollection = () => {
         setIsModalOpen(true)
         const date = new Date().toISOString()
         if (value !== '') {
-            const newData = [{
-                id: Math.floor(Math.random() * 1000),
-                title: value,
-                data: [anime],
-                date
-            }]
-            const updateData = [...oldData, ...newData]
-            console.log('save as new', updateData)
-            localStorage.setItem('anime-collections', JSON.stringify(updateData));
-            setValue('')
+            if (!hadSpecialChar(value)) {
+                const newData = [{
+                    id: Math.floor(Math.random() * 1000),
+                    title: value,
+                    data: [anime],
+                    date
+                }]
+                const updateData = [...oldData, ...newData]
+                console.log('save as new', updateData)
+                localStorage.setItem('anime-collections', JSON.stringify(updateData));
+                setValue('')
+                setIsModalOpen(false)
+
+            } else {
+                setInfo("oops, there's some special character")
+            }
         } else {
             const index = oldData.findIndex((item) => title === item.title)
             console.log('datas', index, title)
@@ -107,8 +119,8 @@ const Detail = () => {
             const updateData = [...oldData, ...newData]
             updateData.splice(index, 1)
             localStorage.setItem('anime-collections', JSON.stringify(updateData))
+            setIsModalOpen(false)
         }
-        setIsModalOpen(false)
     }
 
 
@@ -169,6 +181,7 @@ const Detail = () => {
                     onClickClose={() => { setIsModalOpen(false); setTitle('') }}
                     onClickSave={() => saveNewCollection()}
                     value={title}
+                    info={info}
                     setValue={(event) => setTitle(event.target.value)}
                 />
             }
@@ -183,6 +196,7 @@ const Detail = () => {
                         setTitle(value)
                     }}
                     value={value}
+                    info={info}
                     items={oldData}
                     setValue={(event) => setValue(event.target.value)}
                 />

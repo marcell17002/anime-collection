@@ -16,6 +16,7 @@ const CollectionDetail = () => {
     const [loading, setLoading] = useState(true)
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [value, setValue] = useState('')
+    const [info, setInfo] = useState('')
 
 
     useEffect(() => {
@@ -59,6 +60,11 @@ const CollectionDetail = () => {
         return `${newDate} ${monthName} ${year}`
     }
 
+    const hadSpecialChar = (payload) => {
+        var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
+        return format.test(payload)
+    }
+
 
     const removeAnime = (id) => {
         const temp = anime
@@ -75,7 +81,7 @@ const CollectionDetail = () => {
     }
 
     const saveEditedData = () => {
-        if (value !== '') {
+        if (value !== '' && !hadSpecialChar(value)) {
             const oldData = JSON.parse(localStorage.getItem('anime-collections'))
             const index = oldData.findIndex(item => parseInt(params.id) === item.id)
             const temp = {
@@ -87,6 +93,9 @@ const CollectionDetail = () => {
             localStorage.setItem('anime-collections', JSON.stringify(updateData))
             setAnime(temp)
             setIsModalOpen(false)
+        } else {
+            setInfo("oops, there's some special character")
+
         }
     }
 
@@ -102,7 +111,10 @@ const CollectionDetail = () => {
                                     <h1 css={styles.textTitle}>{anime.title}</h1>
                                     <p>Added At : {dateFormat(anime.date)}</p>
                                 </div>
-                                <button css={styles.buttonAction} onClick={() => setIsModalOpen(true)}>
+                                <button css={styles.buttonAction} onClick={() => {
+                                    setInfo('')
+                                    setIsModalOpen(true)
+                                }}>
                                     <FontAwesomeIcon icon="pen" css={styles.iconPen} />
                                 </button>
                             </div>
@@ -135,6 +147,7 @@ const CollectionDetail = () => {
                     }}
                     onClickSave={() => saveEditedData()}
                     value={value}
+                    info={info}
                     placeholder={anime.title}
                     setValue={(event) => setValue(event.target.value)}
                 />

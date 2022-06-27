@@ -2,7 +2,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
 import { styles } from './styles'
-const ModalInput = ({ onClickCancel, onClickClose, onClickSave, items, value, setValue, emitId }) => {
+const ModalInput = ({ onClickCancel, onClickClose, onClickSave, items, info, value, setValue, emitId }) => {
 
     const [isActive, setIsActive] = useState(false)
     const [title, setTitle] = useState('')
@@ -24,6 +24,7 @@ const ModalInput = ({ onClickCancel, onClickClose, onClickSave, items, value, se
                     <div>
                         {items.map((item, key) => <div key={key} css={isActive && title === item.title ? styles.textListActive : styles.textListInActive} onClick={() => handleEmit(item.title)}>{item.title}</div>)}
                         <input type="text" css={styles.inputText} onChange={setValue} value={value} placeholder="collection title" />
+                        <p css={styles.textInfo}>{info}</p>
                     </div>
                     <div css={styles.bundleButton}>
                         <button css={styles.buttonCancel} onClick={onClickCancel}>

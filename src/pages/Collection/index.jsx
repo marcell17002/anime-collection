@@ -17,7 +17,7 @@ const Collection = () => {
     const [value, setValue] = useState('')
     const [id, setId] = useState(0)
     const [placeholder, setPlaceholder] = useState('')
-
+    const [info, setInfo] = useState('')
 
     useQuery(query.ANIME_DETAILS, {
         variables: { id: randomId },
@@ -53,8 +53,13 @@ const Collection = () => {
         localStorage.setItem('anime-collections', JSON.stringify(updateData))
     }
 
+    const hadSpecialChar = (payload) => {
+        var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
+        return format.test(payload)
+    }
+
     const editCollection = (id) => {
-        if (value !== '') {
+        if (value !== '' && !hadSpecialChar(value)) {
             const oldData = JSON.parse(localStorage.getItem('anime-collections'))
             const index = oldData.findIndex(item => id === item.id)
             const temp = {
@@ -67,6 +72,8 @@ const Collection = () => {
             setData(updateData)
             setIsModalOpen(false)
             setValue('')
+        } else {
+            setInfo("oops, there's some special character")
         }
     }
     return (
@@ -90,6 +97,7 @@ const Collection = () => {
                             items={item.data}
                             label={item.title}
                             onClickEdit={() => {
+                                setInfo('')
                                 setIsModalOpen(true)
                                 setId(item.id)
                                 setPlaceholder(item.title)
@@ -113,6 +121,7 @@ const Collection = () => {
                     }}
                     onClickSave={() => editCollection(id)}
                     value={value}
+                    info={info}
                     setValue={event => setValue(event.target.value)}
                 />}
         </div>
