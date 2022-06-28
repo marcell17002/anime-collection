@@ -85,8 +85,6 @@ const animeList = css({
     flexWrap: 'wrap',
     padding: '0px 20px',
     maxWidth: 1248,
-    justifyContent: 'space-between',
-
 })
 
 const textEditInfo = css({

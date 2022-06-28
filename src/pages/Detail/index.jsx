@@ -23,8 +23,6 @@ const Detail = () => {
     const [info, setInfo] = useState('')
     const oldData = JSON.parse(localStorage.getItem('anime-collections'))
 
-
-
     useQuery(query.ANIME_DETAILS, {
         variables: { id: parseInt(params.id) },
         onCompleted: (data) => {

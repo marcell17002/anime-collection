@@ -5,6 +5,7 @@ import { styles } from './styles';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Error from '../../Error';
 import 'swiper/css';
 
 const breakpointCarousel = {
@@ -46,6 +47,7 @@ const CarouselDetailPage = ({ label, to, items, onClickEdit, onClickDelete }) =>
                 </div>
             </div>
             <Gap height={20} />
+            {items.length === 0 && <Error />}
             <Swiper breakpoints={breakpointCarousel}>
                 {items.map((item, key) => (
                     <SwiperSlide key={key}>
