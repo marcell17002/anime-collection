@@ -7,7 +7,7 @@ const Card = ({ image, title, episodes, duration, to, onClick, isEdit }) => {
     return (
         <div css={styles.card} >
             <NavLink to={to} css={styles.navlink}>
-                <img css={styles.cardImage} src={image} />
+                <img css={styles.cardImage} src={image} alt="imge-card" />
             </NavLink>
             <div css={styles.cardInfo}>
                 <div css={styles.bundleHeader}>
