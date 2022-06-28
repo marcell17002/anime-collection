@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css, jsx } from '@emotion/react'
+import { colors } from '../../../../utils'
 
 const breakpoints = [992]
 const mq = breakpoints.map(
@@ -27,7 +28,7 @@ const content = css({
 })
 
 const textHeader = css({
-    color: '#3B82F6',
+    color: colors.primary,
     fontSize: 18,
     paddingRight: 20,
     [mq[0]]: {
@@ -39,7 +40,7 @@ const textHeader = css({
 const inputText = css({
     marginTop: 30,
     border: 0,
-    backgroundColor: '#F5F5F4',
+    backgroundColor: colors.tertiaryGrey,
     padding: '15px 20px',
     borderRadius: 10,
     fontSize: 16,
@@ -61,7 +62,7 @@ const bundleButton = css({
 })
 
 const buttonCancel = css({
-    backgroundColor: '#FCA5A5',
+    backgroundColor: colors.primaryError,
     border: 0,
     margin: 0,
     padding: '0px 20px',
@@ -70,7 +71,7 @@ const buttonCancel = css({
     fontSize: 12,
     fontWeight: 'bold',
     ':hover': {
-        backgroundColor: '#FEE2E2'
+        backgroundColor: colors.secondaryError
     },
     [mq[0]]: {
         fontSize: 18,
@@ -82,7 +83,7 @@ const buttonCancel = css({
 
 
 const buttonSave = css({
-    backgroundColor: '#3B82F6',
+    backgroundColor: colors.primary,
     border: 0,
     margin: 0,
     padding: '0px 20px',
@@ -91,7 +92,7 @@ const buttonSave = css({
     fontSize: 12,
     fontWeight: 'bold',
     ':hover': {
-        backgroundColor: '#93C5FD'
+        backgroundColor: colors.secondary
     },
     [mq[0]]: {
         fontSize: 18,
@@ -106,7 +107,7 @@ const subContent = css({
     flexDirection: 'column',
     padding: 30,
     borderRadius: 20,
-    backgroundColor: '#FAFAF9',
+    backgroundColor: colors.secondaryWhite,
     [mq[0]]: {
         width: 600
     }
@@ -138,7 +139,7 @@ const textListInActive = css({
 const textListActive = css({
     fontSize: 14,
     padding: 10,
-    backgroundColor: '#E7E5E4',
+    backgroundColor: colors.tertiaryGrey,
     borderRadius: 10,
     [mq[0]]: {
         fontsize: 18,
@@ -149,7 +150,7 @@ const textListActive = css({
 const textInfo = css({
     fontSize: 18,
     fontStyle: 'italic',
-    color: 'gray',
+    color: colors.primaryGrey,
     margin: 0,
     paddingTop: 10
 })

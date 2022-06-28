@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
+import { colors } from '../../../../utils'
 
 const breakpoints = [992]
 const mq = breakpoints.map(
@@ -27,7 +28,7 @@ const bundleIconEightTeen = css({
 
 const iconEightTeen = css({
     color: 'white',
-    backgroundColor: '#ff6961',
+    backgroundColor: colors.primaryError,
     borderRadius: 20,
     height: 'auto',
     padding: 8,
@@ -65,7 +66,7 @@ const image = css({
 
 const infoTitleText = css({
     fontSize: 30,
-    color: '#333333',
+    color: colors.primaryBlack,
     fontWeight: 'bold',
     paddingRight: 25,
     margin: 0,
@@ -76,7 +77,7 @@ const infoTitleText = css({
 })
 
 const textGenre = css({
-    color: '#A8A29E'
+    color: colors.secondaryGrey
 })
 
 const detailTextGenre = css({
@@ -90,7 +91,7 @@ const additionalInfo = css({
     p: {
         margin: 0,
         paddingLeft: 5,
-        color: '#878686',
+        color: colors.primaryGrey,
     },
     [mq[0]]: {
         marginTop: 15
@@ -99,7 +100,7 @@ const additionalInfo = css({
 
 const iconHeartInActive = css({
     fontSize: 25,
-    color: '#878686',
+    color: colors.primaryGrey,
     [mq[0]]: {
         fontSize: 30,
     }
@@ -136,40 +137,38 @@ const detailCategoryText = css({
 
 const icon = css({
     fontSize: 20,
-    color: '#3B82F6',
+    color: colors.primary,
     margin: 0
 })
 
 const iconBoard = css({
     fontSize: 20,
-    color: '#3B82F6',
+    color: colors.primary,
     margin: 0
 })
 
 const iconCLock = css({
     fontSize: 20,
-    color: '#FB7185',
+    color: colors.primaryError,
     margin: 0
 })
 
 const iconCalendar = css({
     fontSize: 20,
-    color: '#FBBF24',
+    color: colors.primaryWarning,
     margin: 0
 })
 
 const iconFlag = css({
     fontSize: 20,
-    color: '#4ADE80',
+    color: colors.primarySuccess,
     margin: 0
 })
-
-
 
 const descriptionText = css({
     paddingTop: 10,
     fontSize: 20,
-    color: '#333333',
+    color: colors.primaryBlack,
 })
 
 const button = css({

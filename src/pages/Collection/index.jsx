@@ -5,6 +5,7 @@ import { styles } from './styles';
 import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { query } from '../../config';
+import { isSpecialChar } from '../../utils';
 
 const Collection = () => {
     const [randomId, setRandomId] = useState(() =>
@@ -19,6 +20,7 @@ const Collection = () => {
     const [placeholder, setPlaceholder] = useState('')
     const [info, setInfo] = useState('')
     const [isEmpty, setIsEmpty] = useState(true)
+    const oldData = JSON.parse(localStorage.getItem('anime-collections'))
 
     useQuery(query.ANIME_DETAILS, {
         variables: { id: randomId },
@@ -58,13 +60,17 @@ const Collection = () => {
         localStorage.setItem('anime-collections', JSON.stringify(updateData))
     }
 
-    const hadSpecialChar = (payload) => {
-        var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
-        return format.test(payload)
+    const isTitleExist = (title) => {
+        const result = oldData.filter((key) => key.title === title)
+        return result.length !== 0
     }
 
     const editCollection = (id) => {
-        if (value !== '' && !hadSpecialChar(value)) {
+        if (value !== '' && isSpecialChar(value)) {
+            setInfo("oops, there's some special character")
+        } else if (value !== '' && isTitleExist(value)) {
+            setInfo(`sorry, the ${value} has been added`)
+        } else {
             const oldData = JSON.parse(localStorage.getItem('anime-collections'))
             const index = oldData.findIndex(item => id === item.id)
             const temp = {
@@ -77,8 +83,6 @@ const Collection = () => {
             setData(updateData)
             setIsModalOpen(false)
             setValue('')
-        } else {
-            setInfo("oops, there's some special character")
         }
     }
 

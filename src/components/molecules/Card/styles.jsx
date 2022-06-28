@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
+import { colors } from '../../../utils/colors'
 
 const breakpoints = [992]
 const mq = breakpoints.map(
@@ -56,12 +57,12 @@ const detail = css({
 })
 
 const iconFilm = css({
-    color: '#3B82F6',
+    color: colors.primary,
     fontSize: 16
 })
 
 const iconClock = css({
-    color: '#FBBF24',
+    color: colors.primaryWarning,
     fontSize: 16
 })
 
@@ -73,7 +74,7 @@ const bundleHeader = css({
 })
 
 const iconTrash = css({
-    color: '#E4E4E7',
+    color: colors.tertiaryGrey,
     fontSize: 20,
     paddingLeft: 5,
     ':hover': {
@@ -83,7 +84,7 @@ const iconTrash = css({
 })
 
 const iconHeartInActive = css({
-    color: '#E4E4E7',
+    color: colors.tertiaryGrey,
     fontSize: 20,
     paddingLeft: 5,
     ':hover': {
@@ -94,17 +95,8 @@ const iconHeartInActive = css({
 const textDetail = css({
     margin: 0,
     paddingLeft: 10,
-    color: '#3333',
+    color: colors.primaryBlack,
     fontSize: 14
-})
-
-const iconCheck = css({
-    color: 'white',
-    padding: 6,
-    borderRadius: 12,
-    backgroundColor: '#16A34A',
-    fontSize: 14,
-
 })
 
 const cardTag = css({
@@ -116,10 +108,12 @@ const cardTag = css({
 })
 
 const cardTextHeader = css({
-    width: 175,
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
+    [mq[0]]: {
+        width: 175
+    }
 })
 
 
@@ -134,7 +128,6 @@ export const styles = {
     bundleHeader,
     iconTrash,
     iconHeartInActive,
-    iconCheck,
     textDetail,
     cardTag,
     cardTextHeader

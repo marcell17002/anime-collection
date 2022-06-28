@@ -1,8 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css, jsx } from '@emotion/react'
+import { colors } from '../../../utils/colors'
 
 const information = css({
-    backgroundColor: '#F5F5F4',
+    backgroundColor: colors.secondaryWhite,
     padding: 20,
     borderRadius: 30,
     margin: '0px 20px',

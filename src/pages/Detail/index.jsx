@@ -53,8 +53,12 @@ const Detail = () => {
             setTypeModal('list')
             getParentData()
         }
-
     }, [anime])
+
+    const isTitleExist = (title) => {
+        const result = oldData.filter((key) => key.title === title)
+        return result.length !== 0
+    }
 
     const getParentData = () => {
         let id = null
@@ -75,7 +79,11 @@ const Detail = () => {
         setIsModalOpen(true)
         const date = new Date().toISOString()
         if (value !== '') {
-            if (!isSpecialChar(value)) {
+            if (isTitleExist(value)) {
+                setInfo("sorry, the title has been added")
+            } else if (isSpecialChar(value)) {
+                setInfo(`sorry, the ${value} has been added`)
+            } else {
                 const newData = [{
                     id: Math.floor(Math.random() * 1000),
                     title: value,
@@ -86,8 +94,6 @@ const Detail = () => {
                 localStorage.setItem('anime-collections', JSON.stringify(updateData));
                 setValue('')
                 setIsModalOpen(false)
-            } else {
-                setInfo("oops, there's some special character")
             }
         } else {
             const index = oldData.findIndex((item) => title === item.title)
@@ -116,6 +122,7 @@ const Detail = () => {
             date
         }]
 
+
         if (title !== '') {
             localStorage.setItem('anime-collections', JSON.stringify(newData))
             setTitle('')
@@ -131,7 +138,6 @@ const Detail = () => {
                 <Header />
                 <div css={styles.container}>
                     <div css={styles.bundle}>
-                        <Gap height={50} />
                         {!loading &&
                             <>
                                 <AnimeDetail title={anime.title.userPreferred}

@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css, jsx } from '@emotion/react'
+import { colors } from '../../../utils'
 
 const footer = css({
     display: 'flex',
@@ -25,7 +26,7 @@ const iconInfo = css({
     color: 'black',
     padding: '0px 10px',
     ':hover': {
-        color: '#3B82F6'
+        color: colors.primary
     }
 })
 

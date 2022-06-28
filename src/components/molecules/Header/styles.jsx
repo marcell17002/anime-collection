@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
+import { colors } from '../../../utils'
 
 const breakpoints = [992]
 const mq = breakpoints.map(
@@ -8,7 +9,7 @@ const mq = breakpoints.map(
 
 const main = css({
     width: '100%',
-    zIndex: 3,
+    zIndex: 10,
     position: 'fixed',
     backgroundColor: 'white',
 
@@ -27,7 +28,7 @@ const header = css({
 })
 
 const headerLogo = css({
-    color: '#3B82F6',
+    color: colors.primary,
     margin: 0,
     padding: '15px 5px',
     [mq[0]]: {
@@ -36,12 +37,12 @@ const headerLogo = css({
 })
 
 const headerText = css({
-    color: '#3B82F6',
+    color: colors.primary,
     margin: 0,
     fontWeight: 'bold',
     padding: '0px 10px',
     ':hover': {
-        color: '#93C5FD',
+        color: colors.secondary,
 
     }
 })

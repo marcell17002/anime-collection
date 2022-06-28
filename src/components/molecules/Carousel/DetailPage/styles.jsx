@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
+import { colors } from '../../../../utils'
 
 const breakpoints = [992]
 const mq = breakpoints.map(
@@ -13,7 +14,7 @@ const headerList = css({
 })
 
 const buttonExplore = css({
-    color: '#3B82F6',
+    color: colors.primary,
     textDecoration: 'none',
     marginLeft: 20,
     display: 'none',
@@ -21,7 +22,7 @@ const buttonExplore = css({
         display: 'block'
     },
     ':hover': {
-        color: '#93C5FD'
+        color: colors.secondary
     }
 })
 
@@ -48,12 +49,12 @@ const mainAction = css({
 
 const iconPen = css({
     fontSize: 12,
-    backgroundColor: '#FACC15',
+    backgroundColor: colors.primaryWarning,
     color: 'white',
     padding: 7,
     borderRadius: 20,
     ':hover': {
-        backgroundColor: '#FEF08A',
+        backgroundColor: colors.secondaryWarning,
     },
     [mq[0]]: {
         padding: 8,
@@ -63,12 +64,12 @@ const iconPen = css({
 
 const iconTrash = css({
     fontSize: 12,
-    backgroundColor: '#F87181',
+    backgroundColor: colors.primaryError,
     color: 'white',
     padding: 7,
     borderRadius: 20,
     ':hover': {
-        backgroundColor: '#FECACA',
+        backgroundColor: colors.secondaryError,
     },
     [mq[0]]: {
         padding: 8,

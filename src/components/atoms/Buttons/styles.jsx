@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { colors } from '../../../utils/colors';
 
 const breakpoints = [992]
 const mq = breakpoints.map(
@@ -10,30 +11,29 @@ const mainButton = css({
         border: 0,
         width: '100%',
         textDecoration: 'none',
+        color: colors.primaryWhite,
     }
 
 })
 
 const btnDefault = css({
-    backgroundColor: '#3B82F6',
+    backgroundColor: colors.primary,
     padding: '15px 25px',
     borderRadius: 15,
     fontSize: 20,
-    color: 'white',
     fontWeight: 'bold',
     ':hover': {
-        backgroundColor: '#93C5FD'
+        backgroundColor: colors.secondary
     }
 })
 
 const btnRounded = css({
-    backgroundColor: '#3B82F6',
+    backgroundColor: colors.primary,
     borderRadius: 30,
     padding: '20px 40px',
     fontSize: 18,
-    color: 'white',
     ':hover': {
-        backgroundColor: '#93C5FD'
+        backgroundColor: colors.secondary
     },
     [mq[0]]: {
         width: 'auto',
@@ -42,14 +42,14 @@ const btnRounded = css({
 })
 
 const btnIconRight = css({
-    backgroundColor: '#3B82F6',
+    backgroundColor: colors.primary,
     padding: '20px 30px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
     ':hover': {
-        backgroundColor: '#93C5FD',
+        backgroundColor: colors.secondary,
     }
 })
 
@@ -66,26 +66,26 @@ const iconChevronRight = css({
 })
 
 const btnSuccess = css({
-    backgroundColor: '#22C55E',
+    backgroundColor: colors.primarySuccess,
     padding: '15px 25px',
     borderRadius: 15,
     fontSize: 20,
     color: 'white',
     fontWeight: 'bold',
     ':hover': {
-        backgroundColor: '#86EFAC',
+        backgroundColor: colors.secondarySuccess,
     }
 })
 
 const btnError = css({
-    backgroundColor: '#FCA5A5',
+    backgroundColor: colors.primaryError,
     padding: '15px 25px',
     borderRadius: 15,
     fontSize: 20,
     color: 'white',
     fontWeight: 'bold',
     ':hover': {
-        backgroundColor: '#FEE2E2',
+        backgroundColor: colors.secondaryError,
     }
 })
 export const styles = {

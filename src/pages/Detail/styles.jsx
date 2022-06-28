@@ -31,6 +31,10 @@ const container = css({
 
 const bundle = css({
     padding: '0px 16px',
+    marginTop: 80,
+    [mq[0]]: {
+        marginTop: 30
+    }
 })
 
 export const styles = {

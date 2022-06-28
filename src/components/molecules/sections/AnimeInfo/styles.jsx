@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css, jsx } from '@emotion/react'
+import { colors } from '../../../../utils/colors'
 
 const breakpoints = [992]
 const mq = breakpoints.map(
@@ -62,18 +63,17 @@ const imageHorizontal = css({
 const textTitle = css({
     fontSize: 30,
     margin: 0,
-    color: '#333333',
+    color: colors.primaryBlack,
     [mq[0]]: {
         fontSize: 45,
         paddingRight: 100,
-
     }
 })
 
 const textGenres = css({
     fontSize: 17,
     fontWeight: 'normal',
-    color: '#9CA3AF',
+    color: colors.secondaryGrey,
     [mq[0]]: {
         fontSize: 20,
     }
