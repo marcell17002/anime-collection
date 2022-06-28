@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { Gap } from '../../components/atoms'
-import { TopTrending, CarouselCollectionPage, Header, ModalInput, Footer, Error } from '../../components/molecules'
+import { TopTrending, CarouselCollectionPage, Header, ModalInput, Footer, Error, ModalConfirmation } from '../../components/molecules'
 import { styles } from './styles';
 import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
@@ -15,8 +15,10 @@ const Collection = () => {
     const [loading, setLoading] = useState(true)
     const [data, setData] = useState([])
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [isModalInputOpen, setIsModalInputOpen] = useState(false)
     const [value, setValue] = useState('')
     const [id, setId] = useState(0)
+    const [title, setTitle] = useState('')
     const [placeholder, setPlaceholder] = useState('')
     const [info, setInfo] = useState('')
     const [isEmpty, setIsEmpty] = useState(true)
@@ -38,7 +40,7 @@ const Collection = () => {
 
     useEffect(() => {
         const result = getCollectionData()
-        if (result !== null) {
+        if (result !== null && result.length !== 0) {
             setData(result)
             setIsEmpty(false)
         }
@@ -50,14 +52,21 @@ const Collection = () => {
         return result
     }
 
+    const setTitleDeleted = (id) => {
+        const oldData = JSON.parse(localStorage.getItem('anime-collections'))
+        const index = oldData.findIndex(item => id === item.id)
+        const data = oldData[index].title
+        setTitle(data)
+    }
 
-    const deleteCollection = (id) => {
+    const deleteCollection = () => {
         const oldData = JSON.parse(localStorage.getItem('anime-collections'))
         const index = oldData.findIndex(item => id === item.id)
         const updateData = oldData
         updateData.splice(index, 1)
         setData(updateData)
         localStorage.setItem('anime-collections', JSON.stringify(updateData))
+        setIsModalOpen(false)
     }
 
     const isTitleExist = (title) => {
@@ -65,7 +74,7 @@ const Collection = () => {
         return result.length !== 0
     }
 
-    const editCollection = (id) => {
+    const editCollection = () => {
         if (value !== '' && isSpecialChar(value)) {
             setInfo("oops, there's some special character")
         } else if (value !== '' && isTitleExist(value)) {
@@ -81,7 +90,7 @@ const Collection = () => {
             const updateData = [...oldData, ...[temp]]
             localStorage.setItem('anime-collections', JSON.stringify(updateData))
             setData(updateData)
-            setIsModalOpen(false)
+            setIsModalInputOpen(false)
             setValue('')
         }
     }
@@ -110,11 +119,15 @@ const Collection = () => {
                                 label={item.title}
                                 onClickEdit={() => {
                                     setInfo('')
-                                    setIsModalOpen(true)
+                                    setIsModalInputOpen(true)
                                     setId(item.id)
                                     setPlaceholder(item.title)
                                 }}
-                                onClickDelete={() => deleteCollection(item.id)}
+                                onClickDelete={() => {
+                                    setId(item.id)
+                                    setTitleDeleted(item.id)
+                                    setIsModalOpen(true)
+                                }}
                                 to={`/collection-detail/${item.id}`}
                             />
                         ))
@@ -123,21 +136,34 @@ const Collection = () => {
                 <Footer />
             </div>
             {isModalOpen && !isEmpty &&
+                <ModalConfirmation
+                    value={title}
+                    onClickCancel={() => {
+                        setIsModalOpen(false)
+                    }}
+                    onClickClose={() => {
+                        setIsModalOpen(false)
+                    }}
+                    onClickSave={() => deleteCollection()}
+                />
+            }
+            {isModalInputOpen && !isEmpty &&
                 <ModalInput
                     placeholder={placeholder}
                     onClickCancel={() => {
                         setValue('')
-                        setIsModalOpen(false)
+                        setIsModalInputOpen(false)
                     }}
                     onClickClose={() => {
                         setValue('')
-                        setIsModalOpen(false)
+                        setIsModalInputOpen(false)
                     }}
-                    onClickSave={() => editCollection(id)}
+                    onClickSave={() => editCollection()}
                     value={value}
                     info={info}
                     setValue={event => setValue(event.target.value)}
-                />}
+                />
+            }
         </div>
     )
 }
