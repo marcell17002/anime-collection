@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css, jsx } from '@emotion/react'
+import { colors } from '../../utils'
 
 const breakpoints = [992]
 const mq = breakpoints.map(
@@ -55,7 +56,7 @@ const listBundle = css({
 
 const textTitleList = css({
     margin: 0,
-    color: '#333333',
+    color: colors.primaryBlack,
     fontSize: 24,
     [mq[0]]: {
         fontSize: 32
@@ -64,7 +65,7 @@ const textTitleList = css({
 
 const textDescList = css({
     margin: 0,
-    color: '#9CA3AF',
+    color: colors.secondaryGrey,
     paddingTop: 10,
     paddingBottom: 40,
     width: '100%',

@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css, jsx } from '@emotion/react'
+import { colors } from '../../../../utils'
 
 const breakpoints = [992]
 const mq = breakpoints.map(
@@ -26,7 +27,7 @@ const content = css({
 })
 
 const textHeader = css({
-    color: '#3B82F6',
+    color: colors.primary,
     fontSize: 18,
     paddingRight: 20,
     [mq[0]]: {
@@ -38,7 +39,7 @@ const textHeader = css({
 const inputText = css({
     marginTop: 30,
     border: 0,
-    backgroundColor: '#E7E5E4',
+    backgroundColor: colors.tertiaryGrey,
     padding: '15px 20px',
     borderRadius: 10,
     fontSize: 16,
@@ -64,7 +65,7 @@ const subContent = css({
     flexDirection: 'column',
     padding: 30,
     borderRadius: 20,
-    backgroundColor: '#FAFAF9',
+    backgroundColor: colors.secondaryWhite,
     [mq[0]]: {
         width: 600
     }

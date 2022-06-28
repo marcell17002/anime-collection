@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
+import { colors } from '../../utils'
 
 const breakpoints = [992]
 const mq = breakpoints.map(
@@ -50,7 +51,7 @@ const mainTitle = css({
 
 const iconPen = css({
     fontSize: 12,
-    backgroundColor: '#9CA3AF',
+    backgroundColor: colors.secondaryGrey,
     color: 'white',
     padding: 7,
     marginLeft: 10,
@@ -60,7 +61,7 @@ const iconPen = css({
         fontSize: 16,
     },
     ':hover': {
-        backgroundColor: '#FACC15'
+        backgroundColor: colors.primaryWarning
     }
 })
 
@@ -96,7 +97,7 @@ const textEditInfo = css({
 
 const textTitle = css({
     fontSize: 30,
-    color: '#3B82F6',
+    color: colors.primary,
     [mq[0]]: {
         fontSize: 40
     }

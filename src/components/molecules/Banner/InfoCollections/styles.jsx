@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css, jsx } from '@emotion/react'
+import { colors } from '../../../../utils/colors'
 
 const breakpoints = [992]
 const mq = breakpoints.map(
@@ -7,7 +8,7 @@ const mq = breakpoints.map(
 )
 
 const bannerCollections = css({
-    backgroundColor: '#E4E4E7',
+    backgroundColor: colors.tertiaryGrey,
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
