@@ -22,7 +22,9 @@ const content = css({
     paddingTop: '20%',
     margin: '0px 16px',
     [mq[0]]: {
-        margin: '0px 50px'
+        margin: '0px 50px',
+        paddingTop: '10%',
+
     }
 })
 
