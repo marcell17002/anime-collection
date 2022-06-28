@@ -9,7 +9,7 @@ const mq = breakpoints.map(
 
 const main = css({
     width: '100%',
-    zIndex: 3,
+    zIndex: 10,
     position: 'fixed',
     backgroundColor: 'white',
 

@@ -108,10 +108,12 @@ const cardTag = css({
 })
 
 const cardTextHeader = css({
-    width: 175,
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
+    [mq[0]]: {
+        width: 175
+    }
 })
 
 

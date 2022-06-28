@@ -16,6 +16,7 @@ const CollectionDetail = () => {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [value, setValue] = useState('')
     const [info, setInfo] = useState('')
+    const oldData = JSON.parse(localStorage.getItem('anime-collections'))
 
     useEffect(() => {
         const savedData = getCollectionDataById()
@@ -53,8 +54,18 @@ const CollectionDetail = () => {
         localStorage.setItem('anime-collections', JSON.stringify(updateData))
     }
 
+    const isTitleExist = (title) => {
+        const result = oldData.filter((key) => key.title === title)
+        return result.length !== 0
+    }
+
+
     const saveEditedData = () => {
-        if (value !== '' && !isSpecialChar(value)) {
+        if (value !== '' && isSpecialChar(value)) {
+            setInfo("oops, there's some special character")
+        } else if (value !== '' && isTitleExist(value)) {
+            setInfo(`sorry, the ${value} has been added`)
+        } else {
             const oldData = JSON.parse(localStorage.getItem('anime-collections'))
             const index = oldData.findIndex(item => parseInt(params.id) === item.id)
             const temp = {
@@ -66,8 +77,7 @@ const CollectionDetail = () => {
             localStorage.setItem('anime-collections', JSON.stringify(updateData))
             setAnime(temp)
             setIsModalOpen(false)
-        } else {
-            setInfo("oops, there's some special character")
+            setValue('')
         }
     }
 

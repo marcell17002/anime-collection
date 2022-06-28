@@ -18,8 +18,6 @@ const Anime = () => {
         Math.floor(Math.random() * 10000)
     )
 
-    const [isModalOpen, setIsModalOpen] = useState(false)
-
     useQuery(query.ANIME_LIST, {
         variables: { page: 1, perPage: 10 },
         onCompleted: (data) => {
@@ -54,7 +52,6 @@ const Anime = () => {
     })
 
     const saveToCollection = (id) => {
-        setIsModalOpen(true)
         const oldData = JSON.parse(localStorage.getItem('anime-collections'))
         if (oldData === null) {
             localStorage.setItem('anime-collections', JSON.stringify([anime[id]]));
@@ -108,7 +105,6 @@ const Anime = () => {
                 </div>
 
             </div>
-            {isModalOpen && <ModalInput onClickClose={() => setIsModalOpen(false)} />}
         </div>
     )
 }
