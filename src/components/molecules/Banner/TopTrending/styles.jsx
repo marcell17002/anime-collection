@@ -8,6 +8,7 @@ const mq = breakpoints.map(
 
 const banner = css({
     display: 'flex',
+    textDecoration: 'none',
     flexDirection: 'column',
     position: 'relative',
     marginTop: 20,
@@ -36,7 +37,6 @@ const detailCategory = css({
     padding: '0px 30px 10px 0px',
     [mq[0]]: {
         padding: '5px 20px 10px 0px',
-
     }
 })
 
@@ -68,7 +68,6 @@ const infoBanner = css({
     [mq[0]]: {
         width: '70%',
         margin: '50px 0px 0px 20px'
-
     }
 })
 

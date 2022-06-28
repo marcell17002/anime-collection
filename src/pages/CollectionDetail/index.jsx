@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
 import { Gap, Separator } from '../../components/atoms'
@@ -18,7 +17,6 @@ const CollectionDetail = () => {
     const [value, setValue] = useState('')
     const [info, setInfo] = useState('')
 
-
     useEffect(() => {
         const savedData = getCollectionDataById()
         if (savedData !== null) {
@@ -27,7 +25,6 @@ const CollectionDetail = () => {
             setIsEmpty(false)
         }
     }, [])
-
 
     const getCollectionDataById = () => {
         const savedData = JSON.parse(localStorage.getItem('anime-collections'))
@@ -38,7 +35,6 @@ const CollectionDetail = () => {
         } else {
             return null
         }
-
     }
 
     const removeAnime = async (id) => {

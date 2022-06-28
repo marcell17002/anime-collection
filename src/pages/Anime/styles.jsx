@@ -31,7 +31,6 @@ const iconCheck = css({
     fontSize: 20
 })
 
-
 const animeList = css({
     display: 'flex',
     flexWrap: 'wrap',

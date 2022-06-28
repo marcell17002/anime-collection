@@ -5,8 +5,8 @@ import { useParams } from 'react-router-dom';
 import { Gap } from '../../components/atoms';
 import { AnimeDetail, CarouselDetailPage, Footer, Header, ModalInput, ModalList } from '../../components/molecules';
 import { styles } from './styles';
-import { query } from '../../config/GraphQl/query'
-import { parseStringwithComma } from '../../utils';
+import { query } from '../../config/GraphQl'
+import { isSpecialChar, parseStringwithComma } from '../../utils';
 
 const Detail = () => {
     const params = useParams()
@@ -62,21 +62,16 @@ const Detail = () => {
         index.map((item, key) => {
             if (item.length !== 0) id = key;
         })
-
         const location = id !== null ? oldData[id].title : ''
         setLocation(location)
     }
 
-    const hadSpecialChar = (payload) => {
-        var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
-        return format.test(payload)
-    }
 
     const saveToCollection = () => {
         setIsModalOpen(true)
         const date = new Date().toISOString()
         if (value !== '') {
-            if (!hadSpecialChar(value)) {
+            if (!isSpecialChar(value)) {
                 const newData = [{
                     id: Math.floor(Math.random() * 1000),
                     title: value,
@@ -87,7 +82,6 @@ const Detail = () => {
                 localStorage.setItem('anime-collections', JSON.stringify(updateData));
                 setValue('')
                 setIsModalOpen(false)
-
             } else {
                 setInfo("oops, there's some special character")
             }
@@ -134,7 +128,7 @@ const Detail = () => {
                 <div css={styles.container}>
                     <div css={styles.bundle}>
                         <Gap height={50} />
-                        {!loading ? (
+                        {!loading &&
                             <>
                                 <AnimeDetail title={anime.title.userPreferred}
                                     isAdult={anime.isAdult}
@@ -152,7 +146,6 @@ const Detail = () => {
                                 <Gap height={50} />
                                 <CarouselDetailPage items={recommendationAnime} />
                             </>
-                        ) : <div />
                         }
                     </div>
                 </div>

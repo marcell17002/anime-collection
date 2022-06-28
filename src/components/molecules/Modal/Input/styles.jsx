@@ -6,7 +6,6 @@ const mq = breakpoints.map(
     bp => `@media (min-width: ${bp}px)`
 )
 
-
 const modal = css({
     backgroundColor: 'rgba(0, 0, 0, 0.8);',
     width: '100%',

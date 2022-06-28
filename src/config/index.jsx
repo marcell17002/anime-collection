@@ -1,3 +1,4 @@
 import Router from "./Router";
+import query from './GraphQl'
 
-export { Router }
+export { Router, query }

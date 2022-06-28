@@ -23,5 +23,5 @@ export {
     InfoCollecitons,
     TopTrending,
     Footer,
-    Error
+    Error,
 }

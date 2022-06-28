@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router } from '../config'
 import { ApolloProvider, ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
-import '../utils/fontAwesome'
+import '../config/fontAwesome'
 
 const uri = 'https://graphql.anilist.co'
 const client = new ApolloClient({

@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from 'react'
-import { useLazyQuery, useQuery, refetch } from "@apollo/client";
-import query from '../../config/GraphQl/query';
+import { useLazyQuery, useQuery } from "@apollo/client";
+import { query } from '../../config';
 import { Header, Card, AnimeInfo, ModalInput, InfoCollecitons, Footer } from '../../components/molecules';
 import { styles } from './styles';
 import { Gap } from '../../components/atoms';
@@ -37,7 +37,8 @@ const Anime = () => {
             setLoading(false)
         },
         onError: () => {
-            setRandomAnime(anime[7])
+            const savedData = JSON.parse(localStorage.getItem('anime'))
+            setRandomAnime(savedData[7])
             setLoading(false)
         }
     })
@@ -104,9 +105,7 @@ const Anime = () => {
                 </div>
 
             </div>
-            {isModalOpen ?
-                <ModalInput onClickClose={() => setIsModalOpen(false)} />
-                : ''}
+            {isModalOpen && <ModalInput onClickClose={() => setIsModalOpen(false)} />}
         </div>
     )
 }

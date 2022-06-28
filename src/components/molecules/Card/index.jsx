@@ -2,10 +2,8 @@
 import { NavLink } from 'react-router-dom'
 import { styles } from './styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { css } from '@emotion/react'
 
 const Card = ({ image, title, episodes, duration, to, onClick, isEdit }) => {
-
     return (
         <div css={styles.card} >
             <NavLink to={to} css={styles.navlink}>
