@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Buttons from '../../../atoms/Buttons'
 import { styles } from './styles'
 
 const ModalList = ({ onClickCancel, onClickClose, onClickSave, value, setValue, info, placeholder }) => {
@@ -14,12 +15,9 @@ const ModalList = ({ onClickCancel, onClickClose, onClickSave, value, setValue, 
                     <input type="text" css={styles.inputText} onChange={setValue} value={value} placeholder={placeholder} />
                     <p css={styles.textInfo}>{info}</p>
                     <div css={styles.bundleButton}>
-                        <button css={styles.buttonCancel} onClick={onClickCancel}>
-                            Cancel
-                        </button>
-                        <button css={styles.buttonSave} onClick={onClickSave}>
-                            <p>Save</p>
-                        </button>
+                        <Buttons type="error" label="cancel" onClick={onClickCancel} />
+                        <Buttons label="Save" onClick={onClickSave} />
+
                     </div>
                 </div>
             </div>

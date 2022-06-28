@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { Gap } from '../../../atoms'
+import { Buttons, Gap } from '../../../atoms'
 import { styles } from './styles'
 
 const AnimeInfo = ({ title, genres, imageBanner, imageCover, onClick }) => {
@@ -10,7 +10,9 @@ const AnimeInfo = ({ title, genres, imageBanner, imageCover, onClick }) => {
                 <h3 css={styles.textGenres}>{genres}</h3>
                 <img css={styles.imageMobile} src={imageBanner} alt="cover-image-random-anime" />
                 <Gap height={25} />
-                <button css={styles.buttonDetail} onClick={onClick}>See Full Details</button>
+                <div css={styles.buttonDetail}>
+                    <Buttons type="rounded" onClick={onClick} label="See Full Details" />
+                </div>
             </div>
             <div css={styles.topImageBundles}>
                 <img css={styles.image} src={imageCover} alt="banner-image-random-anime" />

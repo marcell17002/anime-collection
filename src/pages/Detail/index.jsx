@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { useQuery } from '@apollo/client';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Gap } from '../../components/atoms';
 import { AnimeDetail, CarouselDetailPage, Footer, Header, ModalInput, ModalList } from '../../components/molecules';
 import { styles } from './styles';
@@ -10,6 +10,7 @@ import { isSpecialChar, parseStringwithComma } from '../../utils';
 
 const Detail = () => {
     const params = useParams()
+    const navigate = useNavigate()
     const [anime, setAnime] = useState([])
     const [randomPage, setRandomPage] = useState(() => Math.floor(Math.random() * 100))
     const [recommendationAnime, setRecommendationAnime] = useState([])
@@ -20,6 +21,7 @@ const Detail = () => {
     const [typeModal, setTypeModal] = useState('input')
     const [isNew, setIsNew] = useState(true)
     const [location, setLocation] = useState('')
+    const [parentId, setParentId] = useState(0)
     const [info, setInfo] = useState('')
     const oldData = JSON.parse(localStorage.getItem('anime-collections'))
 
@@ -49,12 +51,12 @@ const Detail = () => {
         else {
             setIsNew(false)
             setTypeModal('list')
-            setLocationCollectedData()
+            getParentData()
         }
 
     }, [anime])
 
-    const setLocationCollectedData = () => {
+    const getParentData = () => {
         let id = null
         const index = oldData.map((item) => {
             return item.data.filter((key) => key.id === parseInt(params.id))
@@ -63,7 +65,9 @@ const Detail = () => {
             if (item.length !== 0) id = key;
         })
         const location = id !== null ? oldData[id].title : ''
+        const parentId = id !== null ? oldData[id].id : ''
         setLocation(location)
+        setParentId(parentId)
     }
 
 
@@ -142,7 +146,9 @@ const Detail = () => {
                                     isCollected={location !== ''}
                                     location={location}
                                     description={anime.description}
-                                    onClick={() => setIsModalOpen(true)} />
+                                    onClickSave={() => setIsModalOpen(true)}
+                                    onClickCollected={() => navigate(`/collection-detail/${parentId}`)}
+                                />
                                 <Gap height={50} />
                                 <CarouselDetailPage items={recommendationAnime} />
                             </>

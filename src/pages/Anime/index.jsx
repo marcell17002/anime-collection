@@ -4,7 +4,7 @@ import { useLazyQuery, useQuery } from "@apollo/client";
 import { query } from '../../config';
 import { Header, Card, AnimeInfo, ModalInput, InfoCollecitons, Footer } from '../../components/molecules';
 import { styles } from './styles';
-import { Gap } from '../../components/atoms';
+import { Buttons, Gap } from '../../components/atoms';
 import { useNavigate } from 'react-router-dom';
 import { parseStringwithSlash } from '../../utils';
 
@@ -93,11 +93,14 @@ const Anime = () => {
                                 />
                             ))}
                         </div>
-                        <button css={styles.buttonLoadMore} onClick={async () => {
+                    </div>
+                    <div css={styles.buttonLoadMore}>
+                        <Buttons label="Load More" onClick={() => {
                             setPage(page + 1)
                             renderAnime({ variables: { page: page, perPage: 10 } })
-                        }}>Load More</button>
+                        }} />
                     </div>
+
 
                     <Gap height={100} />
                     <InfoCollecitons onClick={() => navigate('/collection')} />

@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Gap, Separator } from '../../../atoms'
+import { Buttons, Gap, Separator } from '../../../atoms'
 import { styles } from './styles'
 
-const AnimeDetail = ({ title, isAdult, coverImage, favourites, genres, episodes, duration, seasonYear, countryOfOrigin, description, onClick, isCollected, location }) => {
+const AnimeDetail = ({ title, isAdult, coverImage, favourites, genres, episodes, duration, seasonYear, countryOfOrigin, description, onClickSave, onClickCollected, isCollected, location }) => {
     return (
         <div css={styles.information}>
             <div css={styles.imageBundle}>
@@ -53,9 +53,14 @@ const AnimeDetail = ({ title, isAdult, coverImage, favourites, genres, episodes,
                 </div>
                 <p css={styles.descriptionText} dangerouslySetInnerHTML={{ __html: description }} />
                 {isCollected ?
-                    <button css={styles.buttonCollected} onClick={onClick}>Collected At {location}</button> :
-                    <button css={styles.buttonSave} onClick={onClick}>Add to My Collection</button>
+                    <div css={styles.button}>
+                        <Buttons type="success" label={`Collected At ${location}`} onClick={onClickCollected} />
+                    </div> :
+                    <div css={styles.button}>
+                        <Buttons label="Add to My Collection" onClick={onClickSave} />
+                    </div>
                 }
+
             </div>
         </div>
     )
