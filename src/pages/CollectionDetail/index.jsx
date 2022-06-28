@@ -2,7 +2,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
 import { Gap, Separator } from '../../components/atoms'
-import { Card, Error, Footer, Header, ModalInput } from '../../components/molecules'
+import { Card, Error, Footer, Header, ModalConfirmation, ModalInput } from '../../components/molecules'
 import { styles } from './styles'
 import { useParams } from 'react-router-dom'
 import { dateFormat, isSpecialChar } from '../../utils'
@@ -14,7 +14,10 @@ const CollectionDetail = () => {
     const [loading, setLoading] = useState(true)
     const [isEmpty, setIsEmpty] = useState(true)
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [isModalInputOpen, setIsModalInputOpen] = useState(false)
     const [value, setValue] = useState('')
+    const [title, setTitle] = useState('')
+    const [id, setId] = useState(0)
     const [info, setInfo] = useState('')
     const oldData = JSON.parse(localStorage.getItem('anime-collections'))
 
@@ -38,20 +41,27 @@ const CollectionDetail = () => {
         }
     }
 
-    const removeAnime = async (id) => {
+    const setTitleDeleted = (id) => {
+        const temp = anime
+        const index = temp.data.findIndex(item => item.id === id)
+        const title = temp.data[index].title.userPreferred
+        setTitle(title)
+    }
+
+    const removeAnime = () => {
         const temp = anime
         const index = temp.data.findIndex(item => item.id === id)
         const newData = temp.data
         newData.splice(index, 1)
         setData(newData.slice())
 
-        console.log('temp', index, newData, data)
         const savedData = JSON.parse(localStorage.getItem('anime-collections'))
         const indexLocalData = savedData.findIndex(item => item.id === params.id)
         savedData.splice(indexLocalData, 1)
         const updateData = [...savedData, temp]
 
         localStorage.setItem('anime-collections', JSON.stringify(updateData))
+        setIsModalOpen(false)
     }
 
     const isTitleExist = (title) => {
@@ -76,7 +86,7 @@ const CollectionDetail = () => {
             const updateData = [...oldData, ...[temp]]
             localStorage.setItem('anime-collections', JSON.stringify(updateData))
             setAnime(temp)
-            setIsModalOpen(false)
+            setIsModalInputOpen(false)
             setValue('')
         }
     }
@@ -96,7 +106,7 @@ const CollectionDetail = () => {
                                 </div>
                                 <button css={styles.buttonAction} onClick={() => {
                                     setInfo('')
-                                    setIsModalOpen(true)
+                                    setIsModalInputOpen(true)
                                 }}>
                                     <FontAwesomeIcon icon="pen" css={styles.iconPen} />
                                 </button>
@@ -112,7 +122,11 @@ const CollectionDetail = () => {
                                         episodes={item.episodes}
                                         isEdit
                                         duration={item.duration}
-                                        onClick={() => removeAnime(item.id)}
+                                        onClick={() => {
+                                            setTitleDeleted(item.id)
+                                            setId(item.id)
+                                            setIsModalOpen(true)
+                                        }}
                                         to={`/detail/${item.id}`} />
                                 ))}
                             </div>
@@ -126,14 +140,26 @@ const CollectionDetail = () => {
                 <Footer />
             </div>
             {isModalOpen && !isEmpty &&
-                <ModalInput
+                <ModalConfirmation
+                    value={title}
                     onClickCancel={() => {
-                        setValue('')
                         setIsModalOpen(false)
                     }}
                     onClickClose={() => {
-                        setValue('')
                         setIsModalOpen(false)
+                    }}
+                    onClickSave={() => removeAnime()}
+                />
+            }
+            {isModalInputOpen && !isEmpty &&
+                <ModalInput
+                    onClickCancel={() => {
+                        setValue('')
+                        setIsModalInputOpen(false)
+                    }}
+                    onClickClose={() => {
+                        setValue('')
+                        setIsModalInputOpen(false)
                     }}
                     onClickSave={() => saveEditedData()}
                     value={value}

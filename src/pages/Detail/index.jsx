@@ -80,9 +80,9 @@ const Detail = () => {
         const date = new Date().toISOString()
         if (value !== '') {
             if (isTitleExist(value)) {
-                setInfo("sorry, the title has been added")
-            } else if (isSpecialChar(value)) {
                 setInfo(`sorry, the ${value} has been added`)
+            } else if (isSpecialChar(value)) {
+                setInfo("oops, there's some special character")
             } else {
                 const newData = [{
                     id: Math.floor(Math.random() * 1000),

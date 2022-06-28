@@ -8,6 +8,7 @@ import TopTrending from "./Banner/TopTrending";
 import InfoCollecitons from "./Banner/InfoCollections";
 import ModalInput from "./Modal/Input";
 import ModalList from "./Modal/List";
+import ModalConfirmation from "./Modal/Confirmation";
 import Footer from "./Footer";
 import Error from "./Error";
 
@@ -20,6 +21,7 @@ export {
     AnimeDetail,
     ModalInput,
     ModalList,
+    ModalConfirmation,
     InfoCollecitons,
     TopTrending,
     Footer,

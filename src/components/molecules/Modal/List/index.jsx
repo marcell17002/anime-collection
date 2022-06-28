@@ -2,7 +2,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
 import { styles } from './styles'
-const ModalInput = ({ onClickCancel, onClickClose, onClickSave, items, info, value, setValue, emitId }) => {
+
+const ModalList = ({ onClickCancel, onClickClose, onClickSave, items, info, value, setValue, emitId }) => {
     const [isActive, setIsActive] = useState(false)
     const [title, setTitle] = useState('')
 
@@ -39,4 +40,4 @@ const ModalInput = ({ onClickCancel, onClickClose, onClickSave, items, info, val
     )
 }
 
-export default ModalInput
+export default ModalList
