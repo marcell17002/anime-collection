@@ -1,17 +1,20 @@
 /** @jsxImportSource @emotion/react */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { NavLink } from 'react-router-dom'
 import { Gap } from '../../../atoms'
 import { styles } from './styles'
 
-const TopTrending = ({ image, title, trending, episodes, duration, year }) => {
+const TopTrending = ({ image, title, trending, episodes, duration, year, to }) => {
     return (
-        <div css={styles.banner}>
+        <NavLink css={styles.banner} to={to}>
             <div css={styles.bundleImage}>
                 <div css={styles.baseLayerImage}></div>
                 <img css={styles.imageBanner} src={image} alt="banner-image-anime" />
             </div>
             <div css={styles.infoBanner}>
-                <h4 css={styles.titleText}>#{trending} Trending</h4>
+                {trending !== 0 &&
+                    <h4 css={styles.titleText}>#{trending} Trending</h4>
+                }
                 <h2 css={styles.titleText}>{title}</h2>
                 <div css={styles.category}>
                     <div css={styles.detailCategory}>
@@ -30,7 +33,7 @@ const TopTrending = ({ image, title, trending, episodes, duration, year }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </NavLink>
     )
 }
 

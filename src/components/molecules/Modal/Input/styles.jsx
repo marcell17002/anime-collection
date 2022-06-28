@@ -6,7 +6,6 @@ const mq = breakpoints.map(
     bp => `@media (min-width: ${bp}px)`
 )
 
-
 const modal = css({
     backgroundColor: 'rgba(0, 0, 0, 0.8);',
     width: '100%',
@@ -60,47 +59,6 @@ const bundleButton = css({
     margin: '80px 0px 10px 0px'
 })
 
-const buttonCancel = css({
-    backgroundColor: '#FCA5A5',
-    border: 0,
-    margin: 0,
-    padding: '0px 20px',
-    borderRadius: 10,
-    color: 'white',
-    fontSize: 12,
-    fontWeight: 'bold',
-    ':hover': {
-        backgroundColor: '#FEE2E2'
-    },
-    [mq[0]]: {
-        fontSize: 18,
-        borderRadius: 15,
-        padding: '0px 30px',
-
-    }
-})
-
-
-const buttonSave = css({
-    backgroundColor: '#3B82F6',
-    border: 0,
-    margin: 0,
-    padding: '0px 20px',
-    borderRadius: 10,
-    color: 'white',
-    fontSize: 12,
-    fontWeight: 'bold',
-    ':hover': {
-        backgroundColor: '#93C5FD'
-    },
-    [mq[0]]: {
-        fontSize: 18,
-        borderRadius: 15,
-        padding: '0px 30px',
-
-    }
-})
-
 const subContent = css({
     display: 'flex',
     flexDirection: 'column',
@@ -133,7 +91,6 @@ const textList = css({
     [mq[0]]: {
         fontsize: 18,
         padding: 15,
-
     }
 })
 
@@ -151,8 +108,6 @@ export const styles = {
     textHeader,
     inputText,
     bundleButton,
-    buttonCancel,
-    buttonSave,
     subContent,
     bundleTitle,
     iconTimes,

@@ -1,15 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import { useQuery } from '@apollo/client';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Gap } from '../../components/atoms';
 import { AnimeDetail, CarouselDetailPage, Footer, Header, ModalInput, ModalList } from '../../components/molecules';
 import { styles } from './styles';
-import { query } from '../../config/GraphQl/query'
-import { parseStringwithComma } from '../../utils';
+import { query } from '../../config/GraphQl'
+import { isSpecialChar, parseStringwithComma } from '../../utils';
 
 const Detail = () => {
     const params = useParams()
+    const navigate = useNavigate()
     const [anime, setAnime] = useState([])
     const [randomPage, setRandomPage] = useState(() => Math.floor(Math.random() * 100))
     const [recommendationAnime, setRecommendationAnime] = useState([])
@@ -20,10 +21,9 @@ const Detail = () => {
     const [typeModal, setTypeModal] = useState('input')
     const [isNew, setIsNew] = useState(true)
     const [location, setLocation] = useState('')
+    const [parentId, setParentId] = useState(0)
     const [info, setInfo] = useState('')
     const oldData = JSON.parse(localStorage.getItem('anime-collections'))
-
-
 
     useQuery(query.ANIME_DETAILS, {
         variables: { id: parseInt(params.id) },
@@ -51,12 +51,12 @@ const Detail = () => {
         else {
             setIsNew(false)
             setTypeModal('list')
-            setLocationCollectedData()
+            getParentData()
         }
 
     }, [anime])
 
-    const setLocationCollectedData = () => {
+    const getParentData = () => {
         let id = null
         const index = oldData.map((item) => {
             return item.data.filter((key) => key.id === parseInt(params.id))
@@ -64,21 +64,18 @@ const Detail = () => {
         index.map((item, key) => {
             if (item.length !== 0) id = key;
         })
-
         const location = id !== null ? oldData[id].title : ''
+        const parentId = id !== null ? oldData[id].id : ''
         setLocation(location)
+        setParentId(parentId)
     }
 
-    const hadSpecialChar = (payload) => {
-        var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
-        return format.test(payload)
-    }
 
     const saveToCollection = () => {
         setIsModalOpen(true)
         const date = new Date().toISOString()
         if (value !== '') {
-            if (!hadSpecialChar(value)) {
+            if (!isSpecialChar(value)) {
                 const newData = [{
                     id: Math.floor(Math.random() * 1000),
                     title: value,
@@ -89,7 +86,6 @@ const Detail = () => {
                 localStorage.setItem('anime-collections', JSON.stringify(updateData));
                 setValue('')
                 setIsModalOpen(false)
-
             } else {
                 setInfo("oops, there's some special character")
             }
@@ -136,7 +132,7 @@ const Detail = () => {
                 <div css={styles.container}>
                     <div css={styles.bundle}>
                         <Gap height={50} />
-                        {!loading ? (
+                        {!loading &&
                             <>
                                 <AnimeDetail title={anime.title.userPreferred}
                                     isAdult={anime.isAdult}
@@ -150,11 +146,12 @@ const Detail = () => {
                                     isCollected={location !== ''}
                                     location={location}
                                     description={anime.description}
-                                    onClick={() => setIsModalOpen(true)} />
+                                    onClickSave={() => setIsModalOpen(true)}
+                                    onClickCollected={() => navigate(`/collection-detail/${parentId}`)}
+                                />
                                 <Gap height={50} />
                                 <CarouselDetailPage items={recommendationAnime} />
                             </>
-                        ) : <div />
                         }
                     </div>
                 </div>

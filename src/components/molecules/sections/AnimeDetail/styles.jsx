@@ -172,44 +172,12 @@ const descriptionText = css({
     color: '#333333',
 })
 
-const buttonSave = css({
-    backgroundColor: '#3B82F6',
-    padding: '15px 25px',
+const button = css({
     width: '100%',
-    border: 0,
-    borderRadius: 20,
-    fontSize: 20,
-    color: 'white',
-    fontWeight: 'bold',
     marginTop: 20,
     [mq[0]]: {
-        marginTop: 20,
-        width: 'auto'
+        width: 300
     },
-    ':hover': {
-        backgroundColor: '#93C5FD',
-
-    }
-})
-
-const buttonCollected = css({
-    backgroundColor: '#22C55E',
-    padding: '15px 25px',
-    width: '100%',
-    border: 0,
-    borderRadius: 20,
-    fontSize: 20,
-    color: 'white',
-    fontWeight: 'bold',
-    marginTop: 20,
-    [mq[0]]: {
-        marginTop: 20,
-        width: 'auto'
-    },
-    ':hover': {
-        backgroundColor: '#86EFAC',
-
-    }
 })
 
 export const styles = {
@@ -235,6 +203,5 @@ export const styles = {
     iconCalendar,
     iconFlag,
     descriptionText,
-    buttonSave,
-    buttonCollected
+    button,
 }

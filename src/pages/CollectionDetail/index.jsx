@@ -1,14 +1,11 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
 import { Gap, Separator } from '../../components/atoms'
 import { Card, Error, Footer, Header, ModalInput } from '../../components/molecules'
-import { useQuery } from '@apollo/client/react'
-import query from '../../config/GraphQl/query'
 import { styles } from './styles'
 import { useParams } from 'react-router-dom'
-import { dateFormat } from '../../utils'
+import { dateFormat, isSpecialChar } from '../../utils'
 
 const CollectionDetail = () => {
     const params = useParams()
@@ -20,7 +17,6 @@ const CollectionDetail = () => {
     const [value, setValue] = useState('')
     const [info, setInfo] = useState('')
 
-
     useEffect(() => {
         const savedData = getCollectionDataById()
         if (savedData !== null) {
@@ -30,32 +26,25 @@ const CollectionDetail = () => {
         }
     }, [])
 
-
     const getCollectionDataById = () => {
         const savedData = JSON.parse(localStorage.getItem('anime-collections'))
-        if (savedData !== null) {
+        if (savedData !== null && savedData.length !== 0) {
             const tempData = savedData.filter(item => parseInt(params.id) === item.id)
             setLoading(false)
             return tempData[0]
         } else {
             return null
         }
-
     }
 
-
-    const hadSpecialChar = (payload) => {
-        var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
-        return format.test(payload)
-    }
-
-
-    const removeAnime = (id) => {
+    const removeAnime = async (id) => {
         const temp = anime
         const index = temp.data.findIndex(item => item.id === id)
-        temp.data.splice(index, 1)
-        setData(temp.data)
+        const newData = temp.data
+        newData.splice(index, 1)
+        setData(newData.slice())
 
+        console.log('temp', index, newData, data)
         const savedData = JSON.parse(localStorage.getItem('anime-collections'))
         const indexLocalData = savedData.findIndex(item => item.id === params.id)
         savedData.splice(indexLocalData, 1)
@@ -65,7 +54,7 @@ const CollectionDetail = () => {
     }
 
     const saveEditedData = () => {
-        if (value !== '' && !hadSpecialChar(value)) {
+        if (value !== '' && !isSpecialChar(value)) {
             const oldData = JSON.parse(localStorage.getItem('anime-collections'))
             const index = oldData.findIndex(item => parseInt(params.id) === item.id)
             const temp = {
@@ -79,7 +68,6 @@ const CollectionDetail = () => {
             setIsModalOpen(false)
         } else {
             setInfo("oops, there's some special character")
-
         }
     }
 
@@ -93,6 +81,7 @@ const CollectionDetail = () => {
                             <div css={styles.headerList}>
                                 <div css={styles.mainTitle}>
                                     <h1 css={styles.textTitle}>{anime.title}</h1>
+                                    <Separator width={'50%'} />
                                     <p>Added At : {dateFormat(anime.date)}</p>
                                 </div>
                                 <button css={styles.buttonAction} onClick={() => {
@@ -103,6 +92,7 @@ const CollectionDetail = () => {
                                 </button>
                             </div>
                             <Gap height={20} />
+                            {data.length === 0 && <Error />}
                             <div css={styles.animeList}>
                                 {data.map((item, key) => (
                                     <Card

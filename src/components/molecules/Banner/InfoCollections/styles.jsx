@@ -26,20 +26,13 @@ const bundleInfoCollections = css({
     }
 })
 
-
-const bundleButton = css({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+const button = css({
+    marginTop: 50,
+    width: '100%',
     [mq[0]]: {
-        justifyContent: 'start'
+        marginTop: 20,
+        width: 'auto'
     }
-})
-
-const textButton = css({
-    fontSize: 20,
-    color: 'white',
-    margin: 0
 })
 
 const textHeaderCollections = css({
@@ -52,35 +45,10 @@ const textDescCollections = css({
     paddingTop: 15
 })
 
-const buttonCollections = css({
-    backgroundColor: '#3B82F6',
-    border: 0,
-    padding: '20px 30px',
-    borderRadius: 20,
-    width: '100%',
-    marginTop: 50,
-    ':hover': {
-        backgroundColor: '#93C5FD',
-    },
-    [mq[0]]: {
-        width: 'auto',
-        marginTop: 0,
-    }
-})
-
-const iconChevronRight = css({
-    fontSize: 18,
-    color: 'white ',
-    paddingLeft: 20
-})
-
 export const styles = {
     bannerCollections,
     bundleInfoCollections,
-    bundleButton,
-    textButton,
     textHeaderCollections,
     textDescCollections,
-    buttonCollections,
-    iconChevronRight
+    button
 }

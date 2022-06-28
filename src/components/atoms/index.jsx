@@ -1,4 +1,9 @@
+import Buttons from "./Buttons";
 import Gap from "./Gap";
 import Separator from "./Separator";
 
-export { Gap, Separator }
+export {
+    Buttons,
+    Gap,
+    Separator
+}

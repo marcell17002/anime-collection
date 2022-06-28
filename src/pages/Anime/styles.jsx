@@ -31,7 +31,6 @@ const iconCheck = css({
     fontSize: 20
 })
 
-
 const animeList = css({
     display: 'flex',
     flexWrap: 'wrap',
@@ -40,22 +39,11 @@ const animeList = css({
 })
 
 const buttonLoadMore = css({
-    backgroundColor: '#3B82F6',
-    padding: '15px 25px',
-    width: '100%',
-    border: 0,
-    borderRadius: 20,
-    fontSize: 20,
-    color: 'white',
-    fontWeight: 'bold',
-    alignSelf: 'center',
     marginTop: 20,
     [mq[0]]: {
+        alignSelf: 'center',
         marginTop: 50,
-        width: 400
-    },
-    ':hover': {
-        backgroundColor: '#93C5FD'
+        width: 400,
     }
 })
 

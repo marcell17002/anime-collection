@@ -4,7 +4,7 @@ import { TopTrending, CarouselCollectionPage, Header, ModalInput, Footer, Error 
 import { styles } from './styles';
 import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
-import query from '../../config/GraphQl/query';
+import { query } from '../../config';
 
 const Collection = () => {
     const [randomId, setRandomId] = useState(() =>
@@ -94,6 +94,7 @@ const Collection = () => {
                         duration={recommendationAnime.duration}
                         year={recommendationAnime.seasonYear}
                         trending={recommendationAnime.trending}
+                        to={`/detail/${recommendationAnime.id}`}
 
                     />}
                     <Gap height={50} />

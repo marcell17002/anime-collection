@@ -81,21 +81,8 @@ const textGenres = css({
 })
 
 const buttonDetail = css({
-    backgroundColor: '#3B82F6',
-    textDecoration: 'none',
-    border: 0,
-    borderRadius: 30,
-    padding: '20px 40px',
-    fontSize: 18,
-    width: '100%',
-    color: 'white',
-    ':hover': {
-        backgroundColor: '#93C5FD'
-    },
     [mq[0]]: {
-        width: 'auto',
-        fontSize: 20,
-
+        width: 300
     }
 })
 

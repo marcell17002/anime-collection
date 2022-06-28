@@ -28,6 +28,8 @@ const card = css({
     },
     [mq[0]]: {
         width: 220,
+        marginLeft: 20,
+
     },
 })
 
