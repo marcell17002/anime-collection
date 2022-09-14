@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import Card from '../../Card';
 import { Gap } from '../../../atoms';
-import { styles } from './styles';
+import styles from './styles';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay, Pagination, Navigation } from "swiper";

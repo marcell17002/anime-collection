@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { styles } from './styles'
+import styles from './styles'
 
 const Error = () => {
     return (

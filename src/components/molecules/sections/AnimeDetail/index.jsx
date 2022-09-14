@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Buttons, Gap, Separator } from '../../../atoms'
-import { styles } from './styles'
+import styles from './styles'
 
 const AnimeDetail = ({ title, isAdult, coverImage, favourites, genres, episodes, duration, seasonYear, countryOfOrigin, description, onClickSave, onClickCollected, isCollected, location }) => {
     return (

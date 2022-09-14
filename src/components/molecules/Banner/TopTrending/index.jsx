@@ -2,7 +2,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NavLink } from 'react-router-dom'
 import { Gap } from '../../../atoms'
-import { styles } from './styles'
+import styles from './styles'
 
 const TopTrending = ({ image, title, trending, episodes, duration, year, to }) => {
     return (

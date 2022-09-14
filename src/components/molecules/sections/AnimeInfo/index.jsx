@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { Buttons, Gap } from '../../../atoms'
-import { styles } from './styles'
+import styles from './styles'
 
 const AnimeInfo = ({ title, genres, imageBanner, imageCover, onClick }) => {
     return (

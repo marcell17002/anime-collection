@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { NavLink } from 'react-router-dom'
-import { styles } from './styles'
+import styles from './styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Card = ({ image, title, episodes, duration, to, onClick, isEdit }) => {

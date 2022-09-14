@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Buttons from '../../../atoms/Buttons'
-import { styles } from './styles'
+import styles from './styles'
 
 const ModalInput = ({ onClickCancel, onClickClose, onClickSave, value, setValue, info, placeholder }) => {
     return (

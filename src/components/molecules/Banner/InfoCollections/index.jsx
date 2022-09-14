@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Buttons } from '../../../atoms'
-import { styles } from './styles'
+import styles from './styles'
 
 const InfoCollecitons = ({ onClick }) => {
     return (

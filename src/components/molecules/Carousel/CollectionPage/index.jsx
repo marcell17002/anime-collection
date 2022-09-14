@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import Card from '../../Card';
 import { Gap } from '../../../atoms';
-import { styles } from './styles';
+import styles from './styles';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Swiper, SwiperSlide } from 'swiper/react';

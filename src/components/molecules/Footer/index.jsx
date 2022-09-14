@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { styles } from './styles'
+import styles from './styles'
 const Footer = () => {
     const linkGithub = 'https://github.com/marcell17002'
     const linkInstagram = 'https://www.instagram.com/arntonius/'

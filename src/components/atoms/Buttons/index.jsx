@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { styles } from './styles'
+import styles from './styles'
 
 const Buttons = ({ onClick, label, type, iconName }) => {
     const ButtonSelector = () => {
