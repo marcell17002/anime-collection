@@ -6,6 +6,7 @@ import { Card, Error, Footer, Header, ModalConfirmation, ModalInput } from '../.
 import { styles } from './styles'
 import { useParams } from 'react-router-dom'
 import { dateFormat, isSpecialChar } from '../../utils'
+import { Helmet } from 'react-helmet';
 
 const CollectionDetail = () => {
     const params = useParams()
@@ -91,6 +92,7 @@ const CollectionDetail = () => {
         }
     }
 
+    
     return (
         <div css={styles.body}>
             <div css={styles.main}>
