@@ -76,11 +76,7 @@ const Anime = () => {
 
     return (
         <div css={styles.body}>
-            <Helmet>
-                <title>{head?.meta_title}</title>
-                <meta name="description" content={head?.meta_description} />
-                <meta name="keywords" content="anime, japan, cartoon" />
-            </Helmet>
+            
             <div css={styles.main}>
                 <Header />
                 <div css={styles.container}>
