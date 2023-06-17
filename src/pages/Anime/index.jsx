@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { useLazyQuery, useQuery } from "@apollo/client";
 import { query } from '../../config';
 import { Header, Card, AnimeInfo, ModalInput, InfoCollecitons, Footer } from '../../components/molecules';
@@ -7,6 +7,8 @@ import { styles } from './styles';
 import { Buttons, Gap } from '../../components/atoms';
 import { useNavigate } from 'react-router-dom';
 import { parseStringwithSlash } from '../../utils';
+import { Helmet } from 'react-helmet';
+
 
 const Anime = () => {
     const navigate = useNavigate()
@@ -61,8 +63,24 @@ const Anime = () => {
         }
     }
 
+    const [head,setHead]=useState({
+        meta_title:'testing',
+        meta_description:'testing'
+    })
+
+    useEffect(() => {
+        fetch(`https://api.sslpots.com/api/meta-seos/?filters[master_model][model_code][$contains]=sigra`)
+        .then((response) => response.json())
+        .then((actualData) => setHead(actualData.data[0].attributes));
+    }, []);
+
     return (
         <div css={styles.body}>
+            <Helmet>
+                <title>{head?.meta_title}</title>
+                <meta name="description" content={head?.meta_description} />
+                <meta name="keywords" content="anime, japan, cartoon" />
+            </Helmet>
             <div css={styles.main}>
                 <Header />
                 <div css={styles.container}>

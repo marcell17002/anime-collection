@@ -1,13 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { useQuery } from '@apollo/client';
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate,useLocation } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Gap } from '../../components/atoms';
 import { AnimeDetail, CarouselDetailPage, Footer, Header, ModalInput, ModalList } from '../../components/molecules';
 import { styles } from './styles';
 import { query } from '../../config/GraphQl'
 import { isSpecialChar, parseStringwithComma } from '../../utils';
-import { Helmet } from 'react-helmet';
 
 const Detail = () => {
     const params = useParams()
@@ -133,25 +132,8 @@ const Detail = () => {
     }
 
 
-    const [head,setHead]=useState({
-        meta_title:'testing',
-        meta_description:'testing'
-    })
-
-    useEffect(() => {
-        fetch(`https://api.sslpots.com/api/meta-seos/?filters[master_model][model_code][$contains]=sigra`)
-        .then((response) => response.json())
-        .then((actualData) => setHead(actualData.data[0].attributes));
-    }, []);
-
-
     return (
         <div css={styles.body}>
-             <Helmet>
-                <title>{head?.meta_title}</title>
-                <meta name="description" content={head?.meta_description} />
-                <meta name="keywords" content="anime, japan, cartoon" />
-            </Helmet>
             <div css={styles.main}>
                 <Header />
                 <div css={styles.container}>
