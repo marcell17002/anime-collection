@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { query } from '../../config';
 import { isSpecialChar } from '../../utils';
-import { Helmet } from 'react-helmet';
 
 const Collection = () => {
     const [randomId, setRandomId] = useState(() =>
@@ -98,11 +97,6 @@ const Collection = () => {
 
     return (
         <div css={styles.body}>
-             <Helmet>
-                <title>Collection Anime List</title>
-                <meta name="description" content="Best Collection Anime for Anime Lovers" />
-                <meta name="keywords" content="anime, japan, cartoon" />
-            </Helmet>
             <div css={styles.main}>
                 <Header />
                 <div css={styles.container}>
